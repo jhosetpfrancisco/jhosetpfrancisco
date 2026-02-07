@@ -1,60 +1,60 @@
-# jhosetpfrancisco.com
+# Hey, I'm Jhosetp Francisco 👋
 
-Personal portfolio website for **Jhosetp Francisco** — minimalist, fast, and built with modern Angular.
+**Senior Full Stack Developer** — Web & Mobile, DevOps, Fintech & AI
 
-## Tech Stack
+Desarrollo soluciones tecnológicas que generan impacto real. Con experiencia sólida en el sector bancario y financiero, lidero proyectos que combinan seguridad, escalabilidad y experiencia de usuario excepcional.
 
-- **Angular 21** — standalone components, signals, SSR
-- **Nx 22** — monorepo tooling
-- **CSS Custom Properties** — design tokens, no preprocessors
-- **Vitest** — unit testing
-- **Playwright** — e2e testing
+---
 
-## Project Structure
+### En números
 
 ```
-apps/web             → Main Angular app (portfolio)
-apps/web-e2e         → Playwright e2e tests
-libs/design-system   → Design tokens (CSS custom properties + TS constants)
-libs/ui              → Reusable Angular standalone components
+6+ años      desarrollando soluciones enterprise
+3 productos  creados de concepto a producción
 ```
 
-### Pages
+---
 
-| Route                  | Description              |
-|------------------------|--------------------------|
-| `/`                    | Home — landing page      |
-| `/projects/mentebonita`| MenteBonita case study   |
-| `/projects/finanzy`    | Finanzy case study       |
-| `/projects/thaliq`     | Thaliq case study        |
+### Tech Stack
 
-### UI Components (`libs/ui`)
+**Frontend** · Angular · React · Vue.js · TypeScript · Tailwind CSS
 
-`icon` · `button` · `card` · `badge` · `separator` · `container` · `section`
+**Mobile** · Flutter · Ionic · Android · iOS
 
-## Getting Started
+**Backend** · NestJS · .NET · Express.js · PostgreSQL
 
-```bash
-# Install dependencies
-npm install
+**DevOps** · AWS · GCP · Azure · Docker · Kubernetes · CI/CD
 
-# Start dev server
-npx nx serve web
+**AI** · Claude SDK · RAG · Function Calling · MCP · LangFuse
 
-# Production build
-npx nx build web
-```
+---
 
-## Scripts
+### Proyectos destacados
 
-```bash
-npx nx build web                  # Production build
-npx nx lint web                   # Lint
-npx nx test web                   # Unit tests
-npx nx e2e web-e2e                # E2E tests
-npx nx run-many -t lint           # Lint all projects
-```
+<table>
+  <tr>
+    <td width="33%" valign="top">
+      <h3><a href="https://mentebonita.com">MenteBonita</a></h3>
+      <p>Plataforma 360 de booking para servicios de bienestar mental. Multitenant, videollamadas con AWS Chime, panel de especialistas y portal B2B corporativo.</p>
+      <sub>Angular · NestJS · PostgreSQL · AWS</sub>
+    </td>
+    <td width="33%" valign="top">
+      <h3><a href="https://www.thaliq.com">Thaliq</a></h3>
+      <p>Plataforma B2B de agentes conversacionales con IA. Plug & Play con RAG, MCP, Function Calling y orquestación multi-agente. De idea a agente desplegado en minutos.</p>
+      <sub>Angular · NestJS · Claude SDK · AWS</sub>
+    </td>
+    <td width="33%" valign="top">
+      <h3><a href="https://finanzy.app">Finanzy</a></h3>
+      <p>App de finanzas personales con IA. Asistente financiero inteligente que aprende de tus hábitos y te ayuda a tomar mejores decisiones. iOS y Android.</p>
+      <sub>Flutter · NestJS · Claude · AWS</sub>
+    </td>
+  </tr>
+</table>
 
-## License
+---
 
-MIT
+### Contacto
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jhosetpfrancisco)
+[![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=flat&logo=vercel&logoColor=white)](https://jhosetpfrancisco.com)
+[![Email](https://img.shields.io/badge/Email-EA4335?style=flat&logo=gmail&logoColor=white)](mailto:jhosetp.chino@hotmail.com)

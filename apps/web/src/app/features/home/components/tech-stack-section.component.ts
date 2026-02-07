@@ -63,14 +63,8 @@ interface TechCategory {
 
     .stack__grid {
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(2, 1fr);
       gap: var(--space-16);
-    }
-
-    @media (min-width: 768px) {
-      .stack__grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
     }
 
     @media (min-width: 1024px) {

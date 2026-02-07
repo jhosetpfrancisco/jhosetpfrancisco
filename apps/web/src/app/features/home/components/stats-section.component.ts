@@ -68,7 +68,7 @@ interface Stat {
 
     @media (min-width: 1024px) {
       .stats__grid {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
       }
     }
 
@@ -123,13 +123,7 @@ export class StatsSectionComponent {
       label: 'Productos creados',
       description: 'Desde concepto hasta producción',
     },
-    {
-      numericValue: 100,
-      suffix: 'K+',
-      label: 'Transacciones procesadas',
-      description: 'En sistemas bancarios críticos',
-    },
-    {
+{
       numericValue: 15,
       suffix: '+',
       label: 'Tecnologías dominadas',
