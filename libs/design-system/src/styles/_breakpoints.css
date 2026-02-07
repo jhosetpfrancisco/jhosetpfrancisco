@@ -1,0 +1,24 @@
+/* ============================================
+   BREAKPOINT TOKENS
+   Reference only — use via @media queries.
+   CSS custom properties can't be used in @media,
+   so these are documented as comments + custom
+   properties for JS access.
+   ============================================ */
+
+:root {
+  --bp-sm: 640px;
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+  --bp-xl: 1280px;
+  --bp-2xl: 1536px;
+}
+
+/*
+  Usage in CSS:
+  @media (min-width: 640px)  { ... }  sm
+  @media (min-width: 768px)  { ... }  md
+  @media (min-width: 1024px) { ... }  lg
+  @media (min-width: 1280px) { ... }  xl
+  @media (min-width: 1536px) { ... }  2xl
+*/

@@ -1,0 +1,35 @@
+/* Global Styles — Portfolio Web App */
+@import '../../../libs/design-system/src/styles/tokens.css';
+
+html,
+body {
+  background-color: #000000;
+}
+
+/* ============================================
+   Scroll-triggered Animations
+   ============================================ */
+
+/* Base state — hidden until InViewDirective adds .in-view */
+[appInView] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--stagger-delay, 0s);
+}
+
+[appInView].in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  [appInView] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

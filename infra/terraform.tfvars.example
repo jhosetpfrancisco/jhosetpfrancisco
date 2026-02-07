@@ -1,0 +1,5 @@
+hosted_zone_id         = "ZXXXXXXXXXXXXXXXXXXXXX"
+acm_cert_arn           = "arn:aws:acm:us-east-1:000000000000:certificate/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+cf_distribution_id     = "XXXXXXXXXXXXXX"
+cf_distribution_domain = "xxxxxxxxxxxxxx.cloudfront.net"
+s3_bucket              = "your-s3-bucket-name"

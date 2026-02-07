@@ -1,0 +1,34 @@
+/* ============================================
+   COLOR TOKENS
+   Pragmatic, semantic naming. No -light/-dark.
+   ============================================ */
+
+:root {
+  /* --- Surface --- */
+  --color-bg: #ffffff;
+  --color-fg: #030213;
+  --color-surface: #f3f3f5;
+  --color-muted: #ececf0;
+  --color-subtle: #717182;
+  --color-accent: #e9ebef;
+  --color-border: rgba(0, 0, 0, 0.1);
+
+  /* --- Interactive --- */
+  --color-primary: #030213;
+  --color-primary-fg: #ffffff;
+  --color-destructive: #d4183d;
+  --color-destructive-fg: #ffffff;
+  --color-ring: rgba(3, 2, 19, 0.2);
+
+  /* --- Inverse (hero, dark sections) --- */
+  --color-inverse: #000000;
+  --color-inverse-fg: #ffffff;
+
+  /* --- Neutral scale (utility) --- */
+  --color-neutral-200: #e5e5e5;
+  --color-neutral-400: #a3a3a3;
+  --color-neutral-500: #737373;
+  --color-neutral-600: #525252;
+  --color-neutral-700: #404040;
+  --color-neutral-900: #171717;
+}
