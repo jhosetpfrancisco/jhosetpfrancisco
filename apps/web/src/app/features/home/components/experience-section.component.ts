@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { TranslocoModule } from '@jsverse/transloco';
 import {
   ContainerComponent,
   SectionComponent,
@@ -7,47 +8,45 @@ import {
 import { InViewDirective } from '../../../shared/directives/in-view.directive';
 
 interface Experience {
-  role: string;
+  id: string;
   company: string;
-  period: string;
-  description: string;
   achievements: string[];
 }
 
 @Component({
   selector: 'app-experience-section',
   standalone: true,
-  imports: [ContainerComponent, SectionComponent, IconComponent, InViewDirective],
+  imports: [ContainerComponent, SectionComponent, IconComponent, InViewDirective, TranslocoModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <ui-section sectionId="experience" class="exp">
       <ui-container maxWidth="6xl">
         <div class="exp__header" appInView>
-          <h2 class="section-label">Experiencia Profesional</h2>
+          <h2 class="section-label">{{ 'home.experience.label' | transloco }}</h2>
           <div class="section-divider"></div>
         </div>
 
         <div class="exp__list">
-          @for (exp of experiences; track exp.role; let i = $index) {
+          @for (exp of experiences; track exp.id; let i = $index) {
             <div class="exp__item" appInView [stagger]="i">
               <div class="exp__top">
                 <div>
-                  <h3 class="exp__role">{{ exp.role }}</h3>
+                  <h3 class="exp__role">{{ 'home.experience.items.' + exp.id + '.role' | transloco }}</h3>
                   <p class="exp__company">{{ exp.company }}</p>
                 </div>
                 <div class="exp__period">
                   <ui-icon name="calendar" size="xs" [strokeWidth]="1.5" />
-                  <span>{{ exp.period }}</span>
+                  <span>{{ 'home.experience.items.' + exp.id + '.period' | transloco }}</span>
                 </div>
               </div>
 
-              <p class="exp__desc">{{ exp.description }}</p>
+              <p class="exp__desc">{{ 'home.experience.items.' + exp.id + '.desc' | transloco }}</p>
 
               <div class="exp__achievements">
-                @for (a of exp.achievements; track a) {
+                @for (key of exp.achievements; track key) {
                   <div class="exp__achievement">
                     <span class="exp__dash">&mdash;</span>
-                    <span>{{ a }}</span>
+                    <span>{{ 'home.experience.items.' + exp.id + '.achievements.' + key | transloco }}</span>
                   </div>
                 }
               </div>
@@ -166,43 +165,8 @@ interface Experience {
 })
 export class ExperienceSectionComponent {
   readonly experiences: Experience[] = [
-    {
-      role: 'Mid-Senior Full Stack Developer',
-      company: 'Banco Ripley Perú',
-      period: 'Feb 2023 - Presente',
-      description:
-        'Desarrollo e implementación de mejoras y optimizaciones en productos digitales del banco, trabajando tanto en microservicios como en la capa cliente.',
-      achievements: [
-        'Optimización del rendimiento en la carga del home y módulo de productos',
-        'Diseño e implementación de nuevos features en microservicios backend',
-        'Mejoras continuas en la experiencia de usuario del canal digital',
-        'Colaboración en arquitectura de soluciones escalables para banca retail',
-      ],
-    },
-    {
-      role: 'Frontend Developer',
-      company: 'Akiba',
-      period: 'Ene 2021 - Presente',
-      description:
-        'Adaptación y mejora continua de la plataforma web, incluyendo la migración a un nuevo diseño bajo altos estándares de calidad de software y rendimiento.',
-      achievements: [
-        'Migración completa de la plataforma a un nuevo diseño optimizado',
-        'Mejora continua del rendimiento para una carga rápida y eficiente',
-        'Implementación de estándares de calidad y mejores prácticas frontend',
-        'Evolución de freelance a colaborador de largo plazo (+5 años)',
-      ],
-    },
-    {
-      role: 'ICT Trainee',
-      company: 'Statkraft',
-      period: 'Oct 2019 - Jul 2021',
-      description:
-        'Mejora de procesos internos en áreas de contabilidad e hidrología, automatizando flujos de trabajo y desarrollando herramientas internas.',
-      achievements: [
-        'Automatización de procesos contables internos',
-        'Desarrollo de herramientas para el área de hidrología',
-        'Optimización de flujos de trabajo operativos',
-      ],
-    },
+    { id: 'ripley', company: 'Banco Ripley Perú', achievements: ['a1', 'a2', 'a3', 'a4'] },
+    { id: 'akiba', company: 'Akiba', achievements: ['a1', 'a2', 'a3', 'a4'] },
+    { id: 'statkraft', company: 'Statkraft', achievements: ['a1', 'a2', 'a3'] },
   ];
 }

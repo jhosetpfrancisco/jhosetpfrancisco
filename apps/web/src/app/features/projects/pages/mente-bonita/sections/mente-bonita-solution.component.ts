@@ -1,105 +1,54 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { TranslocoModule } from '@jsverse/transloco';
 import { IconComponent } from '@jhosetpfrancisco/ui';
 
 @Component({
   selector: 'app-mente-bonita-solution',
   standalone: true,
-  imports: [IconComponent],
+  imports: [IconComponent, TranslocoModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section class="section section--alt">
       <div class="section__bg-grid"></div>
       <div class="container">
-        <span class="section-number">02 &mdash; La Soluci\u00f3n</span>
-        <h2 class="section-title">Plataforma 360 Multitenant</h2>
+        <span class="section-number">{{ 'projects.mentebonita.solution.number' | transloco }}</span>
+        <h2 class="section-title">{{ 'projects.mentebonita.solution.title' | transloco }}</h2>
         <p class="section-subtitle">
-          Dise\u00f1amos y desarrollamos una plataforma integral que centraliza
-          la gesti\u00f3n de servicios de bienestar mental, permitiendo a
-          m\u00faltiples organizaciones operar de forma independiente bajo una
-          infraestructura compartida.
+          {{ 'projects.mentebonita.solution.subtitle' | transloco }}
         </p>
 
         <div class="solution-cards">
-          <div class="solution-card">
-            <span class="solution-card__number">01</span>
-            <h3 class="solution-card__title">Agendamiento Inteligente</h3>
-            <p class="solution-card__desc">
-              Sistema de reservas en tiempo real con disponibilidad
-              din\u00e1mica de especialistas, prevenci\u00f3n de conflictos y
-              notificaciones autom\u00e1ticas por email.
-            </p>
-          </div>
-          <div class="solution-card">
-            <span class="solution-card__number">02</span>
-            <h3 class="solution-card__title">Videollamadas Integradas</h3>
-            <p class="solution-card__desc">
-              Sesiones de mindfulness por videollamada con AWS Chime SDK,
-              sin necesidad de aplicaciones externas, con salas
-              din\u00e1micas y grabaci\u00f3n opcional.
-            </p>
-          </div>
-          <div class="solution-card">
-            <span class="solution-card__number">03</span>
-            <h3 class="solution-card__title">Arquitectura Multitenant</h3>
-            <p class="solution-card__desc">
-              Cada organizaci\u00f3n opera con datos aislados bajo un mismo
-              despliegue, con configuraci\u00f3n personalizada de marca,
-              roles y permisos granulares.
-            </p>
-          </div>
+          @for (card of cards; track card.id; let i = $index) {
+            <div class="solution-card">
+              <span class="solution-card__number">{{ card.number }}</span>
+              <h3 class="solution-card__title">
+                {{ 'projects.mentebonita.solution.cards.' + card.id + '.title' | transloco }}
+              </h3>
+              <p class="solution-card__desc">
+                {{ 'projects.mentebonita.solution.cards.' + card.id + '.desc' | transloco }}
+              </p>
+            </div>
+          }
         </div>
 
         <div class="features-box">
-          <h3 class="features-box__title">Features Clave</h3>
+          <h3 class="features-box__title">
+            {{ 'projects.mentebonita.solution.features_title' | transloco }}
+          </h3>
           <div class="features-box__grid">
-            <div class="features-box__item">
-              <ui-icon name="check" size="sm" />
-              <div>
-                <span class="features-box__item-title">
-                  Sistema de Notificaciones
-                </span>
-                <span class="features-box__item-desc">
-                  Emails transaccionales con SES y colas as\u00edncronas con SQS
-                  para recordatorios y confirmaciones
-                </span>
+            @for (key of features; track key) {
+              <div class="features-box__item">
+                <ui-icon name="check" size="sm" />
+                <div>
+                  <span class="features-box__item-title">
+                    {{ 'projects.mentebonita.solution.features.' + key + '.title' | transloco }}
+                  </span>
+                  <span class="features-box__item-desc">
+                    {{ 'projects.mentebonita.solution.features.' + key + '.desc' | transloco }}
+                  </span>
+                </div>
               </div>
-            </div>
-            <div class="features-box__item">
-              <ui-icon name="check" size="sm" />
-              <div>
-                <span class="features-box__item-title">
-                  Dashboard de Especialistas
-                </span>
-                <span class="features-box__item-desc">
-                  Panel completo para gestionar agenda, pacientes, historial de
-                  sesiones y m\u00e9tricas de rendimiento
-                </span>
-              </div>
-            </div>
-            <div class="features-box__item">
-              <ui-icon name="check" size="sm" />
-              <div>
-                <span class="features-box__item-title">
-                  Portal Corporativo B2B
-                </span>
-                <span class="features-box__item-desc">
-                  Interfaz dedicada para empresas con gesti\u00f3n de empleados,
-                  planes y reportes de uso del servicio
-                </span>
-              </div>
-            </div>
-            <div class="features-box__item">
-              <ui-icon name="check" size="sm" />
-              <div>
-                <span class="features-box__item-title">
-                  Experiencia Unificada
-                </span>
-                <span class="features-box__item-desc">
-                  Flujo consistente para pacientes, especialistas y
-                  administradores desde una \u00fanica aplicaci\u00f3n
-                </span>
-              </div>
-            </div>
+            }
           </div>
         </div>
       </div>
@@ -263,4 +212,11 @@ import { IconComponent } from '@jhosetpfrancisco/ui';
     }
   `,
 })
-export class MenteBonitaSolutionComponent {}
+export class MenteBonitaSolutionComponent {
+  readonly cards = [
+    { id: 'c1', number: '01' },
+    { id: 'c2', number: '02' },
+    { id: 'c3', number: '03' },
+  ];
+  readonly features = ['f1', 'f2', 'f3', 'f4'];
+}

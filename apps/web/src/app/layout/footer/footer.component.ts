@@ -1,17 +1,18 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { TranslocoModule } from '@jsverse/transloco';
 import { ContainerComponent } from '@jhosetpfrancisco/ui';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [ContainerComponent],
+  imports: [ContainerComponent, TranslocoModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <footer class="footer">
       <ui-container maxWidth="6xl">
         <div class="footer__row">
           <p>&copy; {{ year }} Jhosetp Francisco</p>
-          <p>jhosetpfrancisco.com</p>
+          <p>{{ 'footer.site' | transloco }}</p>
         </div>
       </ui-container>
     </footer>

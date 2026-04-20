@@ -1,64 +1,34 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { TranslocoModule } from '@jsverse/transloco';
+
+interface UseCase {
+  id: string;
+  icon: string;
+}
 
 @Component({
   selector: 'app-thaliq-use-cases',
   standalone: true,
+  imports: [TranslocoModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section class="section">
       <div class="container">
-        <span class="section-number">05 &mdash; Casos de Uso</span>
-        <h2 class="section-title">Soluciones para Cada Industria</h2>
+        <span class="section-number">{{ 'projects.thaliq.use_cases.number' | transloco }}</span>
+        <h2 class="section-title">{{ 'projects.thaliq.use_cases.title' | transloco }}</h2>
 
         <div class="use-cases-grid">
-          <div class="use-case-card">
-            <span class="use-case-card__icon">&#128722;</span>
-            <h4 class="use-case-card__title">E-commerce</h4>
-            <p class="use-case-card__text">
-              Agentes de atencion al cliente, recomendaciones de productos,
-              gestion de pedidos y soporte post-venta automatizado 24/7.
-            </p>
-          </div>
-          <div class="use-case-card">
-            <span class="use-case-card__icon">&#128187;</span>
-            <h4 class="use-case-card__title">SaaS / Tech</h4>
-            <p class="use-case-card__text">
-              Onboarding inteligente, soporte tecnico L1/L2, asistentes de
-              documentacion y agentes internos para equipos de producto.
-            </p>
-          </div>
-          <div class="use-case-card">
-            <span class="use-case-card__icon">&#127974;</span>
-            <h4 class="use-case-card__title">Banca</h4>
-            <p class="use-case-card__text">
-              Asesores financieros virtuales, analisis de riesgo, deteccion de
-              fraude y automatizacion de procesos regulatorios (KYC/AML).
-            </p>
-          </div>
-          <div class="use-case-card">
-            <span class="use-case-card__icon">&#127973;</span>
-            <h4 class="use-case-card__title">Healthcare</h4>
-            <p class="use-case-card__text">
-              Triaje inteligente, asistentes para pacientes, gestion de citas
-              y agentes de documentacion clinica con cumplimiento HIPAA.
-            </p>
-          </div>
-          <div class="use-case-card">
-            <span class="use-case-card__icon">&#127891;</span>
-            <h4 class="use-case-card__title">Educacion</h4>
-            <p class="use-case-card__text">
-              Tutores personalizados, asistentes de evaluacion, chatbots de
-              admisiones y agentes de soporte estudiantil 24/7.
-            </p>
-          </div>
-          <div class="use-case-card">
-            <span class="use-case-card__icon">&#127968;</span>
-            <h4 class="use-case-card__title">Real Estate</h4>
-            <p class="use-case-card__text">
-              Agentes de calificacion de leads, asistentes de busqueda de
-              propiedades, automatizacion de follow-ups y analisis de mercado.
-            </p>
-          </div>
+          @for (useCase of useCases; track useCase.id) {
+            <div class="use-case-card">
+              <span class="use-case-card__icon" [innerHTML]="useCase.icon"></span>
+              <h4 class="use-case-card__title">
+                {{ 'projects.thaliq.use_cases.items.' + useCase.id + '.title' | transloco }}
+              </h4>
+              <p class="use-case-card__text">
+                {{ 'projects.thaliq.use_cases.items.' + useCase.id + '.desc' | transloco }}
+              </p>
+            </div>
+          }
         </div>
       </div>
     </section>
@@ -153,4 +123,13 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
     }
   `,
 })
-export class ThaliqUseCasesComponent {}
+export class ThaliqUseCasesComponent {
+  readonly useCases: UseCase[] = [
+    { id: 'ecommerce', icon: '&#128722;' },
+    { id: 'saas', icon: '&#128187;' },
+    { id: 'banca', icon: '&#127974;' },
+    { id: 'healthcare', icon: '&#127973;' },
+    { id: 'education', icon: '&#127891;' },
+    { id: 'real_estate', icon: '&#127968;' },
+  ];
+}

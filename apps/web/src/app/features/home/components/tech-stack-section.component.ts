@@ -1,30 +1,31 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { TranslocoModule } from '@jsverse/transloco';
 import { ContainerComponent, SectionComponent } from '@jhosetpfrancisco/ui';
 import { InViewDirective } from '../../../shared/directives/in-view.directive';
 
 interface TechCategory {
-  name: string;
+  id: string;
   techs: string[];
 }
 
 @Component({
   selector: 'app-tech-stack-section',
   standalone: true,
-  imports: [ContainerComponent, SectionComponent, InViewDirective],
+  imports: [ContainerComponent, SectionComponent, InViewDirective, TranslocoModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <ui-section sectionId="stack" class="stack">
       <div class="stack__pattern"></div>
       <ui-container maxWidth="6xl" class="stack__inner">
         <div class="stack__header" appInView>
-          <h2 class="section-label">Stack Tecnológico</h2>
+          <h2 class="section-label">{{ 'home.stack.label' | transloco }}</h2>
           <div class="section-divider"></div>
         </div>
 
         <div class="stack__grid">
-          @for (cat of categories; track cat.name; let i = $index) {
+          @for (cat of categories; track cat.id; let i = $index) {
             <div class="stack__category" appInView [stagger]="i">
-              <h3 class="stack__cat-name">{{ cat.name }}</h3>
+              <h3 class="stack__cat-name">{{ 'home.stack.categories.' + cat.id | transloco }}</h3>
               <div class="stack__list">
                 @for (tech of cat.techs; track tech) {
                   <div class="stack__tech">{{ tech }}</div>
@@ -117,10 +118,10 @@ interface TechCategory {
 })
 export class TechStackSectionComponent {
   readonly categories: TechCategory[] = [
-    { name: 'Frontend', techs: ['Angular', 'React', 'Vue.js', 'TypeScript', 'Tailwind CSS'] },
-    { name: 'Mobile', techs: ['Flutter', 'Ionic', 'Android', 'iOS'] },
-    { name: 'Backend', techs: ['NestJS', '.NET', 'Express.js', 'PostgreSQL'] },
-    { name: 'DevOps & Cloud', techs: ['AWS', 'GCP', 'Azure', 'Docker', 'Kubernetes', 'CI/CD'] },
-    { name: 'IA & Otros', techs: ['Claude SDK', 'RAG', 'Function Calling', 'MCP', 'LLMOps', 'LangFuse'] },
+    { id: 'frontend', techs: ['Angular', 'React', 'Vue.js', 'TypeScript', 'Tailwind CSS'] },
+    { id: 'mobile', techs: ['Flutter', 'Ionic', 'Android', 'iOS'] },
+    { id: 'backend', techs: ['NestJS', '.NET', 'Express.js', 'PostgreSQL'] },
+    { id: 'devops', techs: ['AWS', 'GCP', 'Azure', 'Docker', 'Kubernetes', 'CI/CD'] },
+    { id: 'ai', techs: ['Claude SDK', 'RAG', 'Function Calling', 'MCP', 'LLMOps', 'LangFuse'] },
   ];
 }

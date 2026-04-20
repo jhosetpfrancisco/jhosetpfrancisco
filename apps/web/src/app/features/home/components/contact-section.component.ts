@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { TranslocoModule } from '@jsverse/transloco';
 import {
   ContainerComponent,
   SectionComponent,
@@ -7,8 +8,8 @@ import {
 import { InViewDirective } from '../../../shared/directives/in-view.directive';
 
 interface ContactMethod {
+  id: string;
   icon: string;
-  label: string;
   value: string;
   href: string;
 }
@@ -16,22 +17,20 @@ interface ContactMethod {
 @Component({
   selector: 'app-contact-section',
   standalone: true,
-  imports: [ContainerComponent, SectionComponent, IconComponent, InViewDirective],
+  imports: [ContainerComponent, SectionComponent, IconComponent, InViewDirective, TranslocoModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <ui-section sectionId="contact" class="contact">
       <div class="contact__glow"></div>
       <ui-container maxWidth="6xl" class="contact__inner">
         <div class="contact__header" appInView>
-          <h2 class="section-label">Contacto</h2>
+          <h2 class="section-label">{{ 'home.contact.label' | transloco }}</h2>
           <div class="section-divider"></div>
-          <p class="contact__subtitle">
-            ¿Tienes un proyecto en mente o quieres colaborar? Estoy disponible para nuevas oportunidades.
-          </p>
+          <p class="contact__subtitle">{{ 'home.contact.subtitle' | transloco }}</p>
         </div>
 
         <div class="contact__grid">
-          @for (method of contactMethods; track method.label; let i = $index) {
+          @for (method of contactMethods; track method.id; let i = $index) {
             <a
               class="contact__card"
               appInView [stagger]="i"
@@ -44,7 +43,7 @@ interface ContactMethod {
                   <ui-icon [name]="method.icon" size="sm" [strokeWidth]="1.5" />
                 </div>
                 <div>
-                  <p class="contact__label">{{ method.label }}</p>
+                  <p class="contact__label">{{ 'home.contact.methods.' + method.id | transloco }}</p>
                   <p class="contact__value">{{ method.value }}</p>
                 </div>
               </div>
@@ -176,26 +175,26 @@ interface ContactMethod {
 export class ContactSectionComponent {
   readonly contactMethods: ContactMethod[] = [
     {
+      id: 'linkedin',
       icon: 'linkedin',
-      label: 'LinkedIn',
       value: 'Jhosetp Francisco',
       href: 'https://www.linkedin.com/in/jhosetpfrancisco',
     },
     {
+      id: 'github',
       icon: 'github',
-      label: 'GitHub',
       value: '@jhosetpfrancisco',
       href: 'https://github.com/jhosetpfrancisco',
     },
     {
+      id: 'email',
       icon: 'mail',
-      label: 'Email',
       value: 'jhosetp.chino@hotmail.com',
       href: 'mailto:jhosetp.chino@hotmail.com',
     },
     {
+      id: 'website',
       icon: 'globe',
-      label: 'Website',
       value: 'jhosetpfrancisco.com',
       href: 'https://jhosetpfrancisco.com',
     },

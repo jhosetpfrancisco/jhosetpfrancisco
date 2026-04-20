@@ -1,5 +1,6 @@
 import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslocoModule } from '@jsverse/transloco';
 import {
   ContainerComponent,
   SectionComponent,
@@ -8,8 +9,8 @@ import {
 import { InViewDirective } from '../../../shared/directives/in-view.directive';
 
 interface Project {
+  id: string;
   title: string;
-  description: string;
   icon: string;
   image: string;
   tags: string[];
@@ -19,22 +20,20 @@ interface Project {
 @Component({
   selector: 'app-projects-section',
   standalone: true,
-  imports: [ContainerComponent, SectionComponent, IconComponent, InViewDirective],
+  imports: [ContainerComponent, SectionComponent, IconComponent, InViewDirective, TranslocoModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <ui-section sectionId="projects" class="projects">
       <div class="projects__pattern"></div>
       <ui-container maxWidth="6xl" class="projects__inner">
         <div class="projects__header" appInView>
-          <h2 class="section-label">Proyectos Destacados</h2>
+          <h2 class="section-label">{{ 'home.projects_section.label' | transloco }}</h2>
           <div class="section-divider"></div>
-          <p class="projects__subtitle">
-            Soluciones innovadoras que combinan tecnología de vanguardia con impacto real
-          </p>
+          <p class="projects__subtitle">{{ 'home.projects_section.subtitle' | transloco }}</p>
         </div>
 
         <div class="projects__list">
-          @for (project of projects; track project.title; let i = $index) {
+          @for (project of projects; track project.id; let i = $index) {
             <div class="projects__item" appInView>
               <div class="projects__grid" [class.projects__grid--reverse]="i % 2 !== 0">
                 <!-- Image -->
@@ -54,7 +53,7 @@ interface Project {
                     <h3 class="projects__title">{{ project.title }}</h3>
                   </div>
 
-                  <p class="projects__desc">{{ project.description }}</p>
+                  <p class="projects__desc">{{ 'home.projects_section.items.' + project.id + '.desc' | transloco }}</p>
 
                   <div class="projects__tags">
                     @for (tag of project.tags; track tag) {
@@ -63,7 +62,7 @@ interface Project {
                   </div>
 
                   <button class="projects__link" (click)="navigate(project.link)">
-                    Ver más
+                    {{ 'home.projects_section.view_more' | transloco }}
                     <ui-icon name="external-link" size="xs" [strokeWidth]="1.5" />
                   </button>
                 </div>
@@ -238,9 +237,8 @@ export class ProjectsSectionComponent {
 
   readonly projects: Project[] = [
     {
+      id: 'mentebonita',
       title: 'MenteBonita',
-      description:
-        'Plataforma integral de booking para servicios de bienestar mental y físico. Conecta usuarios con profesionales de Mindfulness, Psicología, Nutrición y más.',
       icon: 'zap',
       image:
         'https://images.unsplash.com/photo-1655970580622-4a547789c850?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtZW50YWwlMjB3ZWxsbmVzcyUyMG1lZGl0YXRpb24lMjBzcGF8ZW58MXx8fHwxNzcwNDE4MjM4fDA&ixlib=rb-4.1.0&q=80&w=1080',
@@ -248,9 +246,8 @@ export class ProjectsSectionComponent {
       link: '/projects/mentebonita',
     },
     {
+      id: 'thaliq',
       title: 'Thaliq',
-      description:
-        'Plataforma B2B de agentes conversacionales con IA. Solución Plug & Play que permite a empresas integrar agentes inteligentes con contexto de negocio mediante RAG, HTTP Calls, MCP e instrucciones personalizadas.',
       icon: 'zap',
       image:
         'https://images.unsplash.com/photo-1756967385885-0f20d517f72f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhcnRpZmljaWFsJTIwaW50ZWxsaWdlbmNlJTIwcm9ib3QlMjB0ZWNobm9sb2d5fGVufDF8fHx8MTc3MDM5MzcyN3ww&ixlib=rb-4.1.0&q=80&w=1080',
@@ -258,9 +255,8 @@ export class ProjectsSectionComponent {
       link: '/projects/thaliq',
     },
     {
+      id: 'finanzy',
       title: 'Finanzy',
-      description:
-        'App de finanzas personales con IA que simplifica la gestión del dinero. Incluye un asistente financiero inteligente que aprende de tus hábitos y te ayuda a tomar mejores decisiones.',
       icon: 'zap',
       image:
         'https://images.unsplash.com/photo-1758519292135-2af0ad50f552?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwZXJzb25hbCUyMGZpbmFuY2UlMjBtb2JpbGUlMjBhcHB8ZW58MXx8fHwxNzcwMzk0MDYzfDA&ixlib=rb-4.1.0&q=80&w=1080',

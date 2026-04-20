@@ -1,73 +1,52 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { TranslocoModule } from '@jsverse/transloco';
 import { IconComponent } from '@jhosetpfrancisco/ui';
 
 @Component({
   selector: 'app-thaliq-stack',
   standalone: true,
-  imports: [IconComponent],
+  imports: [IconComponent, TranslocoModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section class="section section--alt">
       <div class="section__bg-diagonal"></div>
       <div class="container">
-        <span class="section-number">04 &mdash; Stack</span>
-        <h2 class="section-title">Stack Tecnologico Enterprise</h2>
+        <span class="section-number">{{ 'projects.thaliq.stack.number' | transloco }}</span>
+        <h2 class="section-title">{{ 'projects.thaliq.stack.title' | transloco }}</h2>
 
         <div class="stack-grid">
-          <div class="stack-card">
-            <span class="stack-card__category">Frontend</span>
-            <h4 class="stack-card__title">Angular + TypeScript</h4>
-            <p class="stack-card__text">
-              Aplicacion SPA con Angular standalone components, signals y
-              change detection OnPush. UI reactiva, accesible y performante.
-            </p>
-          </div>
-          <div class="stack-card">
-            <span class="stack-card__category">Backend</span>
-            <h4 class="stack-card__title">NestJS + PostgreSQL</h4>
-            <p class="stack-card__text">
-              API modular con NestJS, TypeORM y PostgreSQL. Arquitectura
-              hexagonal, CQRS-ready y migraciones automatizadas.
-            </p>
-          </div>
-          <div class="stack-card">
-            <span class="stack-card__category">Motor IA</span>
-            <h4 class="stack-card__title">Claude SDK + Custom Agentic Engine</h4>
-            <p class="stack-card__text">
-              Motor de IA construido sobre el SDK puro de Claude. Agentic SDK
-              propio con human-in-the-loop, function calling y multi-agent workflows.
-            </p>
-          </div>
-          <div class="stack-card">
-            <span class="stack-card__category">Infraestructura</span>
-            <h4 class="stack-card__title">AWS Cloud</h4>
-            <p class="stack-card__text">
-              Infraestructura en AWS con ECS Fargate, RDS, S3, CloudFront y
-              CI/CD automatizado. Auto-scaling y alta disponibilidad.
-            </p>
-          </div>
+          @for (card of cards; track card) {
+            <div class="stack-card">
+              <span class="stack-card__category">
+                {{ 'projects.thaliq.stack.cards.' + card + '.category' | transloco }}
+              </span>
+              <h4 class="stack-card__title">
+                {{ 'projects.thaliq.stack.cards.' + card + '.title' | transloco }}
+              </h4>
+              <p class="stack-card__text">
+                {{ 'projects.thaliq.stack.cards.' + card + '.desc' | transloco }}
+              </p>
+            </div>
+          }
         </div>
 
         <div class="differentiator-box">
-          <h4 class="differentiator-box__title">Custom Agentic SDK: El Diferenciador</h4>
+          <h4 class="differentiator-box__title">
+            {{ 'projects.thaliq.stack.diff_title' | transloco }}
+          </h4>
           <p class="differentiator-box__text">
-            Thaliq utiliza el SDK puro de Claude como base, sobre el cual se
-            construyo un Agentic SDK propio con capacidades avanzadas de
-            orquestacion, control y extensibilidad.
+            {{ 'projects.thaliq.stack.diff_desc' | transloco }}
           </p>
           <div class="differentiator-box__tags">
-            <span class="tag">Human in the Loop</span>
-            <span class="tag">Function Calling</span>
-            <span class="tag">Streaming</span>
-            <span class="tag">Multi-Agent</span>
-            <span class="tag">Context Management</span>
-            <span class="tag">MCP Protocol</span>
+            @for (tag of diffTags; track tag) {
+              <span class="tag">{{ tag }}</span>
+            }
           </div>
           <div class="differentiator-box__note">
             <ui-icon name="smartphone" size="sm" />
             <span>
-              <strong>Proximamente:</strong> SDKs nativos para iOS y Android,
-              permitiendo integrar agentes Thaliq directamente en apps moviles.
+              <strong>{{ 'projects.thaliq.stack.diff_note_prefix' | transloco }}</strong>
+              {{ 'projects.thaliq.stack.diff_note_text' | transloco }}
             </span>
           </div>
         </div>
@@ -244,4 +223,14 @@ import { IconComponent } from '@jhosetpfrancisco/ui';
     }
   `,
 })
-export class ThaliqStackComponent {}
+export class ThaliqStackComponent {
+  readonly cards = ['frontend', 'backend', 'ai', 'infra'];
+  readonly diffTags = [
+    'Human in the Loop',
+    'Function Calling',
+    'Streaming',
+    'Multi-Agent',
+    'Context Management',
+    'MCP Protocol',
+  ];
+}

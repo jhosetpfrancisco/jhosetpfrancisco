@@ -1,27 +1,24 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { TranslocoModule } from '@jsverse/transloco';
 
 @Component({
   selector: 'app-mente-bonita-hero',
   standalone: true,
+  imports: [TranslocoModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section class="hero">
       <div class="hero__bg-pattern"></div>
       <div class="container hero__inner">
-        <span class="badge">CASE STUDY</span>
-        <h1 class="hero__title">MenteBonita</h1>
+        <span class="badge">{{ 'projects.mentebonita.hero.badge' | transloco }}</span>
+        <h1 class="hero__title">{{ 'projects.mentebonita.hero.title' | transloco }}</h1>
         <p class="hero__subtitle">
-          Plataforma 360 de mindfulness multitenant que revoluciona la
-          gesti\u00f3n de servicios de bienestar mental
+          {{ 'projects.mentebonita.hero.subtitle' | transloco }}
         </p>
         <div class="hero__tags">
-          <span class="tag">Angular</span>
-          <span class="tag">NestJS</span>
-          <span class="tag">PostgreSQL</span>
-          <span class="tag">AWS</span>
-          <span class="tag">SQS</span>
-          <span class="tag">SES</span>
-          <span class="tag">AWS Chime</span>
+          @for (tag of tags; track tag) {
+            <span class="tag">{{ tag }}</span>
+          }
         </div>
       </div>
     </section>
@@ -124,4 +121,14 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
     }
   `,
 })
-export class MenteBonitaHeroComponent {}
+export class MenteBonitaHeroComponent {
+  readonly tags = [
+    'Angular',
+    'NestJS',
+    'PostgreSQL',
+    'AWS',
+    'SQS',
+    'SES',
+    'AWS Chime',
+  ];
+}

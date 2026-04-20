@@ -1,117 +1,78 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { TranslocoModule } from '@jsverse/transloco';
 
 @Component({
   selector: 'app-mente-bonita-stack',
   standalone: true,
+  imports: [TranslocoModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section class="section">
       <div class="section__bg-diagonal"></div>
       <div class="container">
-        <span class="section-number">03 &mdash; Stack</span>
-        <h2 class="section-title">Stack Tecnol\u00f3gico Enterprise</h2>
+        <span class="section-number">{{ 'projects.mentebonita.stack.number' | transloco }}</span>
+        <h2 class="section-title">{{ 'projects.mentebonita.stack.title' | transloco }}</h2>
 
         <div class="stack-grid">
           <div class="stack-card">
-            <h3 class="stack-card__title">Frontend</h3>
+            <h3 class="stack-card__title">
+              {{ 'projects.mentebonita.stack.frontend_title' | transloco }}
+            </h3>
             <div class="stack-card__techs">
-              <div class="stack-card__tech">
-                <span class="stack-card__tech-name">Angular</span>
-                <span class="stack-card__tech-desc">
-                  Framework principal con standalone components, signals y
-                  lazy loading para m\u00e1ximo rendimiento
-                </span>
-              </div>
-              <div class="stack-card__tech">
-                <span class="stack-card__tech-name">RxJS</span>
-                <span class="stack-card__tech-desc">
-                  Programaci\u00f3n reactiva para manejo de estado, flujos
-                  as\u00edncronos y comunicaci\u00f3n en tiempo real
-                </span>
-              </div>
+              @for (tech of frontendTechs; track tech.id) {
+                <div class="stack-card__tech">
+                  <span class="stack-card__tech-name">{{ tech.name }}</span>
+                  <span class="stack-card__tech-desc">
+                    {{ 'projects.mentebonita.stack.frontend.' + tech.id | transloco }}
+                  </span>
+                </div>
+              }
             </div>
           </div>
           <div class="stack-card">
-            <h3 class="stack-card__title">Backend</h3>
+            <h3 class="stack-card__title">
+              {{ 'projects.mentebonita.stack.backend_title' | transloco }}
+            </h3>
             <div class="stack-card__techs">
-              <div class="stack-card__tech">
-                <span class="stack-card__tech-name">NestJS</span>
-                <span class="stack-card__tech-desc">
-                  Arquitectura modular con inyecci\u00f3n de dependencias,
-                  guards, interceptors y validaci\u00f3n robusta
-                </span>
-              </div>
-              <div class="stack-card__tech">
-                <span class="stack-card__tech-name">PostgreSQL</span>
-                <span class="stack-card__tech-desc">
-                  Base de datos relacional con esquemas separados por tenant,
-                  migraciones automatizadas y backups
-                </span>
-              </div>
+              @for (tech of backendTechs; track tech.id) {
+                <div class="stack-card__tech">
+                  <span class="stack-card__tech-name">{{ tech.name }}</span>
+                  <span class="stack-card__tech-desc">
+                    {{ 'projects.mentebonita.stack.backend.' + tech.id | transloco }}
+                  </span>
+                </div>
+              }
             </div>
           </div>
         </div>
 
         <div class="stack-card stack-card--full">
-          <h3 class="stack-card__title">Infraestructura AWS</h3>
+          <h3 class="stack-card__title">
+            {{ 'projects.mentebonita.stack.infra_title' | transloco }}
+          </h3>
           <div class="stack-card__techs stack-card__techs--infra">
-            <div class="stack-card__tech">
-              <span class="stack-card__tech-name">AWS Chime SDK</span>
-              <span class="stack-card__tech-desc">
-                Videollamadas en tiempo real con salas din\u00e1micas y
-                gesti\u00f3n de participantes
-              </span>
-            </div>
-            <div class="stack-card__tech">
-              <span class="stack-card__tech-name">SQS</span>
-              <span class="stack-card__tech-desc">
-                Colas de mensajes para procesamiento as\u00edncrono de
-                notificaciones y eventos
-              </span>
-            </div>
-            <div class="stack-card__tech">
-              <span class="stack-card__tech-name">SES</span>
-              <span class="stack-card__tech-desc">
-                Servicio de email transaccional para confirmaciones,
-                recordatorios y comunicaciones
-              </span>
-            </div>
-            <div class="stack-card__tech">
-              <span class="stack-card__tech-name">EC2 / ECS</span>
-              <span class="stack-card__tech-desc">
-                Despliegue containerizado con escalado autom\u00e1tico y
-                alta disponibilidad
-              </span>
-            </div>
-            <div class="stack-card__tech">
-              <span class="stack-card__tech-name">RDS PostgreSQL</span>
-              <span class="stack-card__tech-desc">
-                Base de datos gestionada con replicas de lectura y failover
-                autom\u00e1tico
-              </span>
-            </div>
-            <div class="stack-card__tech">
-              <span class="stack-card__tech-name">CloudWatch</span>
-              <span class="stack-card__tech-desc">
-                Monitoreo centralizado con m\u00e9tricas, logs y alarmas para
-                operaci\u00f3n 24/7
-              </span>
-            </div>
+            @for (tech of infraTechs; track tech.id) {
+              <div class="stack-card__tech">
+                <span class="stack-card__tech-name">{{ tech.name }}</span>
+                <span class="stack-card__tech-desc">
+                  {{ 'projects.mentebonita.stack.infra.' + tech.id | transloco }}
+                </span>
+              </div>
+            }
           </div>
         </div>
 
         <div class="arch-box">
-          <h3 class="arch-box__title">Arquitectura Multitenant</h3>
+          <h3 class="arch-box__title">
+            {{ 'projects.mentebonita.stack.arch_title' | transloco }}
+          </h3>
           <p class="arch-box__desc">
-            Cada organizaci\u00f3n opera con aislamiento completo de datos bajo
-            una infraestructura compartida, optimizando costos y simplificando
-            el mantenimiento.
+            {{ 'projects.mentebonita.stack.arch_desc' | transloco }}
           </p>
           <div class="arch-box__tags">
-            <span class="arch-box__tag">Schema Isolation</span>
-            <span class="arch-box__tag">Tenant Context Middleware</span>
-            <span class="arch-box__tag">Row-Level Security</span>
-            <span class="arch-box__tag">Shared Infrastructure</span>
+            @for (tag of archTags; track tag) {
+              <span class="arch-box__tag">{{ tag }}</span>
+            }
           </div>
         </div>
       </div>
@@ -274,4 +235,27 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
     }
   `,
 })
-export class MenteBonitaStackComponent {}
+export class MenteBonitaStackComponent {
+  readonly frontendTechs = [
+    { id: 'angular', name: 'Angular' },
+    { id: 'rxjs', name: 'RxJS' },
+  ];
+  readonly backendTechs = [
+    { id: 'nestjs', name: 'NestJS' },
+    { id: 'postgres', name: 'PostgreSQL' },
+  ];
+  readonly infraTechs = [
+    { id: 'chime', name: 'AWS Chime SDK' },
+    { id: 'sqs', name: 'SQS' },
+    { id: 'ses', name: 'SES' },
+    { id: 'ec2', name: 'EC2 / ECS' },
+    { id: 'rds', name: 'RDS PostgreSQL' },
+    { id: 'cloudwatch', name: 'CloudWatch' },
+  ];
+  readonly archTags = [
+    'Schema Isolation',
+    'Tenant Context Middleware',
+    'Row-Level Security',
+    'Shared Infrastructure',
+  ];
+}

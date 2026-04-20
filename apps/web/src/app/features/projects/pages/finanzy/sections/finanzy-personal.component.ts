@@ -1,46 +1,51 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { TranslocoModule } from '@jsverse/transloco';
 import { IconComponent } from '@jhosetpfrancisco/ui';
+
+interface PersonalCard {
+  id: string;
+  icon: string;
+}
 
 @Component({
   selector: 'app-finanzy-personal',
   standalone: true,
-  imports: [IconComponent],
+  imports: [IconComponent, TranslocoModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section class="section section--alt">
       <div class="section__bg-dots"></div>
       <div class="container">
-        <span class="section-number">04 &mdash; Proyecto Personal</span>
+        <span class="section-number">{{ 'projects.finanzy.personal.number' | transloco }}</span>
         <h2 class="section-title">
-          De la Idea a Producci&oacute;n
+          {{ 'projects.finanzy.personal.title' | transloco }}
         </h2>
 
         <div class="personal-cards">
-          @for (card of personalCards; track card.title) {
+          @for (card of personalCards; track card.id) {
             <div class="personal-card">
               <div class="personal-card__icon">
                 <ui-icon [name]="card.icon" size="md" [strokeWidth]="1.5" />
               </div>
-              <h3 class="personal-card__title">{{ card.title }}</h3>
-              <p class="personal-card__desc">{{ card.description }}</p>
+              <h3 class="personal-card__title">
+                {{ 'projects.finanzy.personal.cards.' + card.id + '.title' | transloco }}
+              </h3>
+              <p class="personal-card__desc">
+                {{ 'projects.finanzy.personal.cards.' + card.id + '.desc' | transloco }}
+              </p>
             </div>
           }
         </div>
 
         <div class="vision-box">
-          <h3 class="vision-box__title">Visi&oacute;n del Proyecto</h3>
+          <h3 class="vision-box__title">
+            {{ 'projects.finanzy.personal.vision_title' | transloco }}
+          </h3>
           <p class="vision-box__text">
-            Finanzy nace de una necesidad personal: gestionar finanzas de forma
-            simple sin depender de hojas de c&aacute;lculo complicadas. La idea
-            evolucion&oacute; hasta convertirse en una app completa que combina la
-            simplicidad de uso con el poder de la inteligencia artificial.
+            {{ 'projects.finanzy.personal.vision_p1' | transloco }}
           </p>
           <p class="vision-box__text">
-            Cada decisi&oacute;n t&eacute;cnica fue tomada pensando en escalabilidad
-            y experiencia de usuario. Desde la elecci&oacute;n de Flutter para cubrir
-            ambas plataformas m&oacute;viles con un solo c&oacute;digo, hasta la
-            integraci&oacute;n de Anthropic Claude para ofrecer un asistente
-            financiero que realmente entiende el contexto del usuario.
+            {{ 'projects.finanzy.personal.vision_p2' | transloco }}
           </p>
         </div>
       </div>
@@ -170,24 +175,9 @@ import { IconComponent } from '@jhosetpfrancisco/ui';
   `,
 })
 export class FinanzyPersonalComponent {
-  readonly personalCards = [
-    {
-      icon: 'code-2',
-      title: 'Full-Stack',
-      description:
-        'Desarrollo completo end-to-end: desde la arquitectura del backend hasta los p\u00edxeles de la UI m\u00f3vil.',
-    },
-    {
-      icon: 'smartphone',
-      title: 'Mobile',
-      description:
-        'App nativa con Flutter que cubre iOS y Android desde un solo c\u00f3digo base con rendimiento nativo.',
-    },
-    {
-      icon: 'brain',
-      title: 'AI-Powered',
-      description:
-        'Integraci\u00f3n profunda con Anthropic Claude para un asistente financiero que realmente entiende.',
-    },
+  readonly personalCards: PersonalCard[] = [
+    { id: 'fullstack', icon: 'code-2' },
+    { id: 'mobile', icon: 'smartphone' },
+    { id: 'ai', icon: 'brain' },
   ];
 }

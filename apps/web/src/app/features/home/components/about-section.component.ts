@@ -1,40 +1,36 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { TranslocoModule } from '@jsverse/transloco';
 import { ContainerComponent, SectionComponent, IconComponent } from '@jhosetpfrancisco/ui';
 import { InViewDirective } from '../../../shared/directives/in-view.directive';
 
 interface Highlight {
+  id: string;
   icon: string;
-  title: string;
-  description: string;
 }
 
 @Component({
   selector: 'app-about-section',
   standalone: true,
-  imports: [ContainerComponent, SectionComponent, IconComponent, InViewDirective],
+  imports: [ContainerComponent, SectionComponent, IconComponent, InViewDirective, TranslocoModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <ui-section sectionId="about" class="about">
       <div class="about__pattern"></div>
       <ui-container maxWidth="6xl" class="about__inner">
         <div class="about__header" appInView>
-          <h2 class="section-label">Sobre Mí</h2>
+          <h2 class="section-label">{{ 'home.about.label' | transloco }}</h2>
           <div class="section-divider"></div>
-          <p class="about__intro">
-            Desarrollador apasionado por crear soluciones tecnológicas que generen impacto real.
-            Con sólida experiencia en el sector bancario y financiero, lidero proyectos que combinan
-            seguridad, escalabilidad y experiencia de usuario excepcional.
-          </p>
+          <p class="about__intro">{{ 'home.about.intro' | transloco }}</p>
         </div>
 
         <div class="about__grid">
-          @for (h of highlights; track h.title; let i = $index) {
+          @for (h of highlights; track h.id; let i = $index) {
             <div class="about__card" appInView [stagger]="i">
               <div class="about__icon">
                 <ui-icon [name]="h.icon" size="lg" [strokeWidth]="1.5" />
               </div>
-              <h3 class="about__title">{{ h.title }}</h3>
-              <p class="about__desc">{{ h.description }}</p>
+              <h3 class="about__title">{{ 'home.about.highlights.' + h.id + '.title' | transloco }}</h3>
+              <p class="about__desc">{{ 'home.about.highlights.' + h.id + '.desc' | transloco }}</p>
             </div>
           }
         </div>
@@ -145,25 +141,9 @@ interface Highlight {
 })
 export class AboutSectionComponent {
   readonly highlights: Highlight[] = [
-    {
-      icon: 'code-2',
-      title: 'Full Stack',
-      description: 'Desarrollo web completo con las últimas tecnologías',
-    },
-    {
-      icon: 'smartphone',
-      title: 'Mobile',
-      description: 'Apps nativas y multiplataforma iOS/Android',
-    },
-    {
-      icon: 'layers',
-      title: 'DevOps',
-      description: 'Infraestructura, CI/CD y arquitectura cloud',
-    },
-    {
-      icon: 'briefcase',
-      title: 'Fintech',
-      description: 'Experiencia en banca y soluciones financieras',
-    },
+    { id: 'fullstack', icon: 'code-2' },
+    { id: 'mobile', icon: 'smartphone' },
+    { id: 'devops', icon: 'layers' },
+    { id: 'fintech', icon: 'briefcase' },
   ];
 }

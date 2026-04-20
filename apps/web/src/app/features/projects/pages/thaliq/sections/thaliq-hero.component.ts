@@ -1,35 +1,33 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { TranslocoModule } from '@jsverse/transloco';
 import { IconComponent } from '@jhosetpfrancisco/ui';
 
 @Component({
   selector: 'app-thaliq-hero',
   standalone: true,
-  imports: [IconComponent],
+  imports: [IconComponent, TranslocoModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section class="hero">
       <div class="hero__bg-pattern"></div>
       <div class="container hero__inner">
-        <span class="badge">CASE STUDY &bull; AI PLATFORM</span>
+        <span class="badge">{{ 'projects.thaliq.hero.badge' | transloco }}</span>
 
-        <h1 class="hero__title">Thaliq</h1>
+        <h1 class="hero__title">{{ 'projects.thaliq.hero.title' | transloco }}</h1>
 
         <p class="hero__subtitle">
-          Plataforma plug &amp; play para crear, desplegar y gestionar agentes
-          de IA empresariales en minutos
+          {{ 'projects.thaliq.hero.subtitle' | transloco }}
         </p>
 
         <div class="hero__note">
           <ui-icon name="zap" size="sm" />
-          <span>De idea a agente desplegado en minutos, no semanas</span>
+          <span>{{ 'projects.thaliq.hero.note' | transloco }}</span>
         </div>
 
         <div class="hero__tags">
-          <span class="tag">Angular</span>
-          <span class="tag">NestJS</span>
-          <span class="tag">PostgreSQL</span>
-          <span class="tag">AWS</span>
-          <span class="tag">Claude SDK</span>
+          @for (tag of tags; track tag) {
+            <span class="tag">{{ tag }}</span>
+          }
         </div>
       </div>
     </section>
@@ -146,4 +144,6 @@ import { IconComponent } from '@jhosetpfrancisco/ui';
     }
   `,
 })
-export class ThaliqHeroComponent {}
+export class ThaliqHeroComponent {
+  readonly tags = ['Angular', 'NestJS', 'PostgreSQL', 'AWS', 'Claude SDK'];
+}

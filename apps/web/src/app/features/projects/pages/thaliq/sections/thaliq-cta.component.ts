@@ -1,20 +1,20 @@
 import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslocoModule } from '@jsverse/transloco';
 import { IconComponent } from '@jhosetpfrancisco/ui';
 
 @Component({
   selector: 'app-thaliq-cta',
   standalone: true,
-  imports: [IconComponent],
+  imports: [IconComponent, TranslocoModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section class="cta-section">
       <div class="cta-section__bg-pattern"></div>
       <div class="container cta-section__inner">
-        <h3 class="cta-section__title">Conoce Thaliq</h3>
+        <h3 class="cta-section__title">{{ 'projects.thaliq.cta.title' | transloco }}</h3>
         <p class="cta-section__desc">
-          Descubre como Thaliq puede transformar la forma en que tu empresa
-          utiliza la inteligencia artificial.
+          {{ 'projects.thaliq.cta.desc' | transloco }}
         </p>
         <div class="cta-section__actions">
           <a
@@ -23,11 +23,11 @@ import { IconComponent } from '@jhosetpfrancisco/ui';
             rel="noopener noreferrer"
             class="cta-btn cta-btn--primary"
           >
-            Ver Plataforma
+            {{ 'projects.thaliq.cta.primary' | transloco }}
             <ui-icon name="external-link" size="sm" />
           </a>
           <button class="cta-btn cta-btn--secondary" (click)="goToPortfolio()">
-            Volver al Portafolio
+            {{ 'projects.common.back_to_portfolio' | transloco }}
             <ui-icon name="arrow-left" size="sm" />
           </button>
         </div>

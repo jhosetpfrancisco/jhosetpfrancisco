@@ -1,0 +1,21 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Sobre Mí",
+    "stack": "Stack",
+    "projects": "Proyectos",
+    "experience": "Experiencia",
+    "contact": "Contacto",
+    "menu_aria": "Menú de navegación",
+    "main_aria": "Navegación principal",
+    "logo_alt": "Logo de Jhosetp Francisco"
+  },
+  "footer": {
+    "site": "jhosetpfrancisco.com"
+  },
+  "lang_toggle": {
+    "aria": "Cambiar idioma",
+    "es_aria": "Cambiar a español",
+    "en_aria": "Switch to English"
+  }
+}

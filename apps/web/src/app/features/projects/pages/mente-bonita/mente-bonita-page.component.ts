@@ -23,7 +23,7 @@ import { SeoService } from '../../../../shared/services/seo.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <app-project-header
-      ctaLabel="Ver Demo Live"
+      ctaLabel="projects.mentebonita.page.cta_label"
       ctaUrl="https://mentebonita.com/"
     />
 

@@ -1,0 +1,121 @@
+{
+  "home": {
+    "hero": {
+      "subtitle": "Senior Full Stack Developer",
+      "title": "Jhosetp Francisco",
+      "description_line1": "Web and mobile development. Infrastructure and DevOps.",
+      "description_line2": "Specialist in banking, finance and AI-powered solutions.",
+      "cta_projects": "View Projects",
+      "cta_contact": "Contact"
+    },
+    "about": {
+      "label": "About Me",
+      "intro": "Developer passionate about building tech solutions that drive real impact. With solid experience in the banking and finance sector, I lead projects that combine security, scalability, and outstanding user experience.",
+      "highlights": {
+        "fullstack": {
+          "title": "Full Stack",
+          "desc": "End-to-end web development with the latest technologies"
+        },
+        "mobile": {
+          "title": "Mobile",
+          "desc": "Native and cross-platform iOS/Android apps"
+        },
+        "devops": {
+          "title": "DevOps",
+          "desc": "Infrastructure, CI/CD and cloud architecture"
+        },
+        "fintech": {
+          "title": "Fintech",
+          "desc": "Experience in banking and financial solutions"
+        }
+      }
+    },
+    "stats": {
+      "years": {
+        "label": "Years of experience",
+        "desc": "Building enterprise-grade solutions"
+      },
+      "products": {
+        "label": "Products built",
+        "desc": "From concept to production"
+      },
+      "tech": {
+        "label": "Technologies mastered",
+        "desc": "Full stack, mobile, DevOps & AI"
+      }
+    },
+    "stack": {
+      "label": "Tech Stack",
+      "categories": {
+        "frontend": "Frontend",
+        "mobile": "Mobile",
+        "backend": "Backend",
+        "devops": "DevOps & Cloud",
+        "ai": "AI & Others"
+      }
+    },
+    "projects_section": {
+      "label": "Featured Projects",
+      "subtitle": "Innovative solutions that combine cutting-edge technology with real-world impact",
+      "view_more": "Learn more",
+      "items": {
+        "mentebonita": {
+          "desc": "All-in-one booking platform for mental and physical wellness services. Connects users with Mindfulness, Psychology, Nutrition and other professionals."
+        },
+        "thaliq": {
+          "desc": "B2B platform for AI conversational agents. A Plug & Play solution that lets companies embed intelligent agents enriched with business context via RAG, HTTP Calls, MCP and custom instructions."
+        },
+        "finanzy": {
+          "desc": "AI-powered personal finance app that simplifies money management. Ships with an intelligent financial assistant that learns your habits and helps you make smarter decisions."
+        }
+      }
+    },
+    "experience": {
+      "label": "Professional Experience",
+      "items": {
+        "ripley": {
+          "role": "Mid-Senior Full Stack Developer",
+          "period": "Feb 2023 - Present",
+          "desc": "Development and rollout of improvements and optimizations across the bank's digital products, contributing to both microservices and the client layer.",
+          "achievements": {
+            "a1": "Performance optimization on the home and products module loading",
+            "a2": "Design and implementation of new features in backend microservices",
+            "a3": "Continuous UX improvements across the digital channel",
+            "a4": "Collaboration on scalable architecture for retail banking solutions"
+          }
+        },
+        "akiba": {
+          "role": "Frontend Developer",
+          "period": "Jan 2021 - Present",
+          "desc": "Continuous adaptation and improvement of the web platform, including its migration to a new design under high software quality and performance standards.",
+          "achievements": {
+            "a1": "Full migration of the platform to a new optimized design",
+            "a2": "Ongoing performance tuning for fast and efficient loads",
+            "a3": "Adoption of quality standards and frontend best practices",
+            "a4": "Grew from freelance into a long-term collaborator (5+ years)"
+          }
+        },
+        "statkraft": {
+          "role": "ICT Trainee",
+          "period": "Oct 2019 - Jul 2021",
+          "desc": "Improvement of internal processes for the accounting and hydrology areas, automating workflows and building internal tools.",
+          "achievements": {
+            "a1": "Automation of internal accounting processes",
+            "a2": "Development of tools for the hydrology team",
+            "a3": "Optimization of operational workflows"
+          }
+        }
+      }
+    },
+    "contact": {
+      "label": "Contact",
+      "subtitle": "Got a project in mind or want to collaborate? I'm open to new opportunities.",
+      "methods": {
+        "linkedin": "LinkedIn",
+        "github": "GitHub",
+        "email": "Email",
+        "website": "Website"
+      }
+    }
+  }
+}

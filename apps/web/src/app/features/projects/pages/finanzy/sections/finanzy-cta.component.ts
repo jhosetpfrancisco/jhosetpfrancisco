@@ -1,19 +1,20 @@
 import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslocoModule } from '@jsverse/transloco';
 import { IconComponent } from '@jhosetpfrancisco/ui';
 
 @Component({
   selector: 'app-finanzy-cta',
   standalone: true,
-  imports: [IconComponent],
+  imports: [IconComponent, TranslocoModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section class="cta-section">
       <div class="cta-section__bg-pattern"></div>
       <div class="container cta-section__inner">
-        <h2 class="cta-section__title">Descubre Finanzy</h2>
+        <h2 class="cta-section__title">{{ 'projects.finanzy.cta.title' | transloco }}</h2>
         <p class="cta-section__desc">
-          Simplifica tus finanzas personales con inteligencia artificial
+          {{ 'projects.finanzy.cta.desc' | transloco }}
         </p>
         <div class="cta-section__actions">
           <a
@@ -22,11 +23,11 @@ import { IconComponent } from '@jhosetpfrancisco/ui';
             rel="noopener noreferrer"
             class="cta-btn cta-btn--primary"
           >
-            Ver Landing Page
+            {{ 'projects.finanzy.cta.primary' | transloco }}
             <ui-icon name="external-link" size="sm" [strokeWidth]="1.5" />
           </a>
           <button class="cta-btn cta-btn--secondary" (click)="goToPortfolio()">
-            Volver al Portafolio
+            {{ 'projects.common.back_to_portfolio' | transloco }}
             <ui-icon name="arrow-left" size="sm" [strokeWidth]="1.5" />
           </button>
         </div>

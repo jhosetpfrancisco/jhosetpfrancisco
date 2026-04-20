@@ -5,36 +5,37 @@ import {
   PLATFORM_ID,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { TranslocoModule } from '@jsverse/transloco';
 import { IconComponent, ButtonComponent } from '@jhosetpfrancisco/ui';
 import { InViewDirective } from '../../../shared/directives/in-view.directive';
 
 @Component({
   selector: 'app-hero-section',
   standalone: true,
-  imports: [IconComponent, ButtonComponent, InViewDirective],
+  imports: [IconComponent, ButtonComponent, InViewDirective, TranslocoModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section class="hero">
       <div class="hero__container">
         <div class="hero__content">
-          <span class="hero__subtitle" appInView [stagger]="0">Senior Full Stack Developer</span>
+          <span class="hero__subtitle" appInView [stagger]="0">{{ 'home.hero.subtitle' | transloco }}</span>
 
-          <h1 class="hero__title" appInView [stagger]="1">Jhosetp Francisco</h1>
+          <h1 class="hero__title" appInView [stagger]="1">{{ 'home.hero.title' | transloco }}</h1>
 
           <div class="hero__divider" appInView [stagger]="2"></div>
 
           <p class="hero__description" appInView [stagger]="3">
-            Desarrollo web y mobile. Infraestructura y DevOps.
+            {{ 'home.hero.description_line1' | transloco }}
             <br />
-            Especialista en banca, finanzas y soluciones con IA.
+            {{ 'home.hero.description_line2' | transloco }}
           </p>
 
           <div class="hero__ctas" appInView [stagger]="4">
             <ui-button variant="default" size="lg" (click)="scrollTo('#projects')">
-              Ver Proyectos
+              {{ 'home.hero.cta_projects' | transloco }}
             </ui-button>
             <ui-button variant="outline" size="lg" (click)="scrollTo('#contact')">
-              Contacto
+              {{ 'home.hero.cta_contact' | transloco }}
             </ui-button>
           </div>
 

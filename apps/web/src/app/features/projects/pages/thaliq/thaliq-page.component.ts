@@ -26,7 +26,10 @@ import { SeoService } from '../../../../shared/services/seo.service';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <app-project-header ctaLabel="Ver Plataforma" ctaUrl="https://www.thaliq.com/" />
+    <app-project-header
+      ctaLabel="projects.thaliq.page.cta_label"
+      ctaUrl="https://www.thaliq.com/"
+    />
 
     <main class="page">
       <app-thaliq-hero />

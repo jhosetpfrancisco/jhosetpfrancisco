@@ -1,101 +1,41 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { TranslocoModule } from '@jsverse/transloco';
+
+interface Capability {
+  id: string;
+  icon: string;
+  tags: string[];
+}
 
 @Component({
   selector: 'app-thaliq-capabilities',
   standalone: true,
+  imports: [TranslocoModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section class="section">
       <div class="section__bg-dots"></div>
       <div class="container">
-        <span class="section-number">03 &mdash; Capabilities</span>
-        <h2 class="section-title">Todo lo que Necesitas para tu Agente</h2>
+        <span class="section-number">{{ 'projects.thaliq.capabilities.number' | transloco }}</span>
+        <h2 class="section-title">{{ 'projects.thaliq.capabilities.title' | transloco }}</h2>
 
         <div class="capabilities-grid">
-          <div class="capability-card">
-            <span class="capability-card__icon">&#128221;</span>
-            <h4 class="capability-card__title">Prompts Builder</h4>
-            <p class="capability-card__text">
-              Editor visual para crear, versionar y optimizar system prompts.
-              Incluye templates, variables dinamicas y testing en tiempo real.
-            </p>
-            <div class="capability-card__tags">
-              <span class="tag">System Prompts</span>
-              <span class="tag">Few-Shot Learning</span>
-              <span class="tag">Context Windows</span>
+          @for (cap of capabilities; track cap.id) {
+            <div class="capability-card">
+              <span class="capability-card__icon" [innerHTML]="cap.icon"></span>
+              <h4 class="capability-card__title">
+                {{ 'projects.thaliq.capabilities.items.' + cap.id + '.title' | transloco }}
+              </h4>
+              <p class="capability-card__text">
+                {{ 'projects.thaliq.capabilities.items.' + cap.id + '.desc' | transloco }}
+              </p>
+              <div class="capability-card__tags">
+                @for (tag of cap.tags; track tag) {
+                  <span class="tag">{{ tag }}</span>
+                }
+              </div>
             </div>
-          </div>
-
-          <div class="capability-card">
-            <span class="capability-card__icon">&#128218;</span>
-            <h4 class="capability-card__title">RAG</h4>
-            <p class="capability-card__text">
-              Sube documentos y conecta fuentes de datos. El agente consulta tu
-              knowledge base en cada interaccion con busqueda semantica.
-            </p>
-            <div class="capability-card__tags">
-              <span class="tag">PDF Upload</span>
-              <span class="tag">Vector Search</span>
-              <span class="tag">Real-time Sync</span>
-            </div>
-          </div>
-
-          <div class="capability-card">
-            <span class="capability-card__icon">&#128295;</span>
-            <h4 class="capability-card__title">MCP Tools</h4>
-            <p class="capability-card__text">
-              Conecta herramientas MCP pre-construidas o crea las tuyas.
-              El agente ejecuta acciones reales: consultar APIs, enviar emails,
-              actualizar bases de datos.
-            </p>
-            <div class="capability-card__tags">
-              <span class="tag">Pre-built Tools</span>
-              <span class="tag">Custom MCP</span>
-              <span class="tag">Tool Chaining</span>
-            </div>
-          </div>
-
-          <div class="capability-card">
-            <span class="capability-card__icon">&#127760;</span>
-            <h4 class="capability-card__title">HTTP Tools</h4>
-            <p class="capability-card__text">
-              Conecta cualquier API REST como herramienta del agente.
-              Configura endpoints, autenticacion y transformaciones sin codigo.
-            </p>
-            <div class="capability-card__tags">
-              <span class="tag">REST APIs</span>
-              <span class="tag">OAuth</span>
-              <span class="tag">Rate Limiting</span>
-            </div>
-          </div>
-
-          <div class="capability-card">
-            <span class="capability-card__icon">&#128203;</span>
-            <h4 class="capability-card__title">Instructions Builder</h4>
-            <p class="capability-card__text">
-              Define flujos conversacionales, reglas de negocio y fallbacks
-              con un editor visual. Control total sobre el comportamiento del agente.
-            </p>
-            <div class="capability-card__tags">
-              <span class="tag">Flow Designer</span>
-              <span class="tag">Business Rules</span>
-              <span class="tag">Fallbacks</span>
-            </div>
-          </div>
-
-          <div class="capability-card">
-            <span class="capability-card__icon">&#129302;</span>
-            <h4 class="capability-card__title">Multi-Agent Orchestration</h4>
-            <p class="capability-card__text">
-              Orquesta multiples agentes especializados que colaboran entre si.
-              Routing inteligente, delegacion de tareas y contexto compartido.
-            </p>
-            <div class="capability-card__tags">
-              <span class="tag">Agent Routing</span>
-              <span class="tag">Task Delegation</span>
-              <span class="tag">Context Sharing</span>
-            </div>
-          </div>
+          }
         </div>
       </div>
     </section>
@@ -216,4 +156,37 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
     }
   `,
 })
-export class ThaliqCapabilitiesComponent {}
+export class ThaliqCapabilitiesComponent {
+  readonly capabilities: Capability[] = [
+    {
+      id: 'prompts',
+      icon: '&#128221;',
+      tags: ['System Prompts', 'Few-Shot Learning', 'Context Windows'],
+    },
+    {
+      id: 'rag',
+      icon: '&#128218;',
+      tags: ['PDF Upload', 'Vector Search', 'Real-time Sync'],
+    },
+    {
+      id: 'mcp',
+      icon: '&#128295;',
+      tags: ['Pre-built Tools', 'Custom MCP', 'Tool Chaining'],
+    },
+    {
+      id: 'http',
+      icon: '&#127760;',
+      tags: ['REST APIs', 'OAuth', 'Rate Limiting'],
+    },
+    {
+      id: 'instructions',
+      icon: '&#128203;',
+      tags: ['Flow Designer', 'Business Rules', 'Fallbacks'],
+    },
+    {
+      id: 'multi',
+      icon: '&#129302;',
+      tags: ['Agent Routing', 'Task Delegation', 'Context Sharing'],
+    },
+  ];
+}

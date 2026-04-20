@@ -1,73 +1,43 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { TranslocoModule } from '@jsverse/transloco';
 import { IconComponent } from '@jhosetpfrancisco/ui';
 
 @Component({
   selector: 'app-mente-bonita-results',
   standalone: true,
-  imports: [IconComponent],
+  imports: [IconComponent, TranslocoModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section class="section section--alt">
       <div class="section__bg-dots"></div>
       <div class="container">
-        <span class="section-number">04 &mdash; Resultados</span>
-        <h2 class="section-title">Impacto Transformacional</h2>
+        <span class="section-number">{{ 'projects.mentebonita.results.number' | transloco }}</span>
+        <h2 class="section-title">{{ 'projects.mentebonita.results.title' | transloco }}</h2>
 
         <div class="results-metrics">
-          <div class="result-card">
-            <span class="result-card__value">100%</span>
-            <span class="result-card__label">
-              Digitalizaci\u00f3n de la operaci\u00f3n de agendamiento,
-              sesiones y facturaci\u00f3n
-            </span>
-          </div>
-          <div class="result-card">
-            <span class="result-card__value">B2B + B2C</span>
-            <span class="result-card__label">
-              Modelo de negocio dual que permite vender a empresas y
-              usuarios finales simult\u00e1neamente
-            </span>
-          </div>
-          <div class="result-card">
-            <span class="result-card__value">360\u00b0</span>
-            <span class="result-card__label">
-              Cobertura completa del ciclo de vida del servicio de
-              bienestar mental
-            </span>
-          </div>
+          @for (key of metrics; track key) {
+            <div class="result-card">
+              <span class="result-card__value">
+                {{ 'projects.mentebonita.results.metrics.' + key + '.value' | transloco }}
+              </span>
+              <span class="result-card__label">
+                {{ 'projects.mentebonita.results.metrics.' + key + '.label' | transloco }}
+              </span>
+            </div>
+          }
         </div>
 
         <div class="achievements-box">
-          <h3 class="achievements-box__title">Logros Clave</h3>
+          <h3 class="achievements-box__title">
+            {{ 'projects.mentebonita.results.achievements_title' | transloco }}
+          </h3>
           <ul class="achievements-box__list">
-            <li class="achievements-box__item">
-              <ui-icon name="check-circle" size="sm" />
-              <span>
-                Plataforma multitenant funcional que soporta m\u00faltiples
-                organizaciones con aislamiento completo de datos
-              </span>
-            </li>
-            <li class="achievements-box__item">
-              <ui-icon name="check-circle" size="sm" />
-              <span>
-                Integraci\u00f3n nativa de videollamadas eliminando la
-                dependencia de herramientas externas como Zoom o Meet
-              </span>
-            </li>
-            <li class="achievements-box__item">
-              <ui-icon name="check-circle" size="sm" />
-              <span>
-                Sistema de notificaciones as\u00edncrono que procesa miles de
-                emails sin afectar el rendimiento de la aplicaci\u00f3n
-              </span>
-            </li>
-            <li class="achievements-box__item">
-              <ui-icon name="check-circle" size="sm" />
-              <span>
-                Arquitectura preparada para escalar horizontalmente con
-                costos predecibles y mantenimiento simplificado
-              </span>
-            </li>
+            @for (key of achievements; track key) {
+              <li class="achievements-box__item">
+                <ui-icon name="check-circle" size="sm" />
+                <span>{{ 'projects.mentebonita.results.achievements.' + key | transloco }}</span>
+              </li>
+            }
           </ul>
         </div>
       </div>
@@ -200,4 +170,7 @@ import { IconComponent } from '@jhosetpfrancisco/ui';
     }
   `,
 })
-export class MenteBonitaResultsComponent {}
+export class MenteBonitaResultsComponent {
+  readonly metrics = ['m1', 'm2', 'm3'];
+  readonly achievements = ['a1', 'a2', 'a3', 'a4'];
+}

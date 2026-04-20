@@ -8,45 +8,50 @@ import {
   OnDestroy,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { TranslocoModule } from '@jsverse/transloco';
 import { IconComponent } from '@jhosetpfrancisco/ui';
+import { LangToggleComponent } from '../../shared/components/lang-toggle/lang-toggle.component';
 
 interface NavItem {
-  label: string;
+  labelKey: string;
   href: string;
 }
 
 @Component({
   selector: 'app-navigation',
   standalone: true,
-  imports: [IconComponent],
+  imports: [IconComponent, TranslocoModule, LangToggleComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <nav [class]="isScrolled() ? 'nav nav--scrolled' : 'nav'" aria-label="Navegación principal">
+    <nav [class]="isScrolled() ? 'nav nav--scrolled' : 'nav'" [attr.aria-label]="'nav.main_aria' | transloco">
       <div class="nav__container">
         <div class="nav__row">
           <!-- Logo -->
           <button class="nav__logo" (click)="scrollTo('#hero')">
-            <img src="/assets/images/jhosetpfrancisco_ico_light.png" alt="Jhosetp Francisco Logo" width="21" height="21" />
+            <img src="/assets/images/jhosetpfrancisco_ico_light.png" [alt]="'nav.logo_alt' | transloco" width="21" height="21" />
           </button>
 
           <!-- Desktop links -->
           <div class="nav__links">
             @for (item of navItems; track item.href) {
               <button class="nav__link" (click)="scrollTo(item.href)">
-                {{ item.label }}
+                {{ item.labelKey | transloco }}
                 <span class="nav__link-underline"></span>
               </button>
             }
           </div>
 
-          <!-- Mobile toggle -->
-          <button class="nav__toggle" (click)="toggleMenu()" [attr.aria-expanded]="isOpen()" aria-label="Menú de navegación">
-            @if (isOpen()) {
-              <ui-icon name="x" size="sm" />
-            } @else {
-              <ui-icon name="menu" size="sm" />
-            }
-          </button>
+          <!-- Right cluster: lang toggle + mobile button -->
+          <div class="nav__right">
+            <app-lang-toggle class="nav__lang nav__lang--desktop" />
+            <button class="nav__toggle" (click)="toggleMenu()" [attr.aria-expanded]="isOpen()" [attr.aria-label]="'nav.menu_aria' | transloco">
+              @if (isOpen()) {
+                <ui-icon name="x" size="sm" />
+              } @else {
+                <ui-icon name="menu" size="sm" />
+              }
+            </button>
+          </div>
         </div>
 
         <!-- Mobile menu -->
@@ -54,9 +59,12 @@ interface NavItem {
           <div class="nav__mobile">
             @for (item of navItems; track item.href) {
               <button class="nav__mobile-link" (click)="scrollTo(item.href)">
-                {{ item.label }}
+                {{ item.labelKey | transloco }}
               </button>
             }
+            <div class="nav__mobile-lang">
+              <app-lang-toggle />
+            </div>
           </div>
         }
       </div>
@@ -160,6 +168,23 @@ interface NavItem {
       transform: scaleX(1);
     }
 
+    /* Right cluster */
+    .nav__right {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+    }
+
+    .nav__lang--desktop {
+      display: none;
+    }
+
+    @media (min-width: 768px) {
+      .nav__lang--desktop {
+        display: inline-flex;
+      }
+    }
+
     /* Mobile toggle */
     .nav__toggle {
       display: flex;
@@ -208,6 +233,11 @@ interface NavItem {
     .nav__mobile-link:hover {
       color: white;
     }
+
+    .nav__mobile-lang {
+      padding-top: var(--space-2);
+      border-top: 1px solid var(--color-neutral-900);
+    }
   `,
 })
 export class NavigationComponent implements OnInit, OnDestroy {
@@ -218,12 +248,12 @@ export class NavigationComponent implements OnInit, OnDestroy {
   readonly isOpen = signal(false);
 
   readonly navItems: NavItem[] = [
-    { label: 'Inicio', href: '#hero' },
-    { label: 'Sobre Mí', href: '#about' },
-    { label: 'Stack', href: '#stack' },
-    { label: 'Proyectos', href: '#projects' },
-    { label: 'Experiencia', href: '#experience' },
-    { label: 'Contacto', href: '#contact' },
+    { labelKey: 'nav.home', href: '#hero' },
+    { labelKey: 'nav.about', href: '#about' },
+    { labelKey: 'nav.stack', href: '#stack' },
+    { labelKey: 'nav.projects', href: '#projects' },
+    { labelKey: 'nav.experience', href: '#experience' },
+    { labelKey: 'nav.contact', href: '#contact' },
   ];
 
   ngOnInit(): void {

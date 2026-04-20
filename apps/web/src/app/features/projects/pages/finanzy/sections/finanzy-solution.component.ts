@@ -1,41 +1,47 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { TranslocoModule } from '@jsverse/transloco';
 import { IconComponent } from '@jhosetpfrancisco/ui';
 
 @Component({
   selector: 'app-finanzy-solution',
   standalone: true,
-  imports: [IconComponent],
+  imports: [IconComponent, TranslocoModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section class="section section--alt">
       <div class="section__bg-grid"></div>
       <div class="container">
-        <span class="section-number">02 &mdash; La Soluci&oacute;n</span>
+        <span class="section-number">{{ 'projects.finanzy.solution.number' | transloco }}</span>
         <h2 class="section-title">
-          Budgeting App Potenciada con IA
+          {{ 'projects.finanzy.solution.title' | transloco }}
         </h2>
         <p class="section-subtitle">
-          Una app mobile-first que combina tracking financiero intuitivo con
-          inteligencia artificial para simplificar tus finanzas.
+          {{ 'projects.finanzy.solution.subtitle' | transloco }}
         </p>
 
         <div class="solution-cards">
-          @for (card of solutionCards; track card.number) {
+          @for (card of solutionCards; track card.id) {
             <div class="solution-card">
               <span class="solution-card__number">{{ card.number }}</span>
-              <h3 class="solution-card__title">{{ card.title }}</h3>
-              <p class="solution-card__desc">{{ card.description }}</p>
+              <h3 class="solution-card__title">
+                {{ 'projects.finanzy.solution.cards.' + card.id + '.title' | transloco }}
+              </h3>
+              <p class="solution-card__desc">
+                {{ 'projects.finanzy.solution.cards.' + card.id + '.desc' | transloco }}
+              </p>
             </div>
           }
         </div>
 
         <div class="features-box">
-          <h3 class="features-box__title">Features Clave</h3>
+          <h3 class="features-box__title">
+            {{ 'projects.finanzy.solution.features_title' | transloco }}
+          </h3>
           <div class="features-box__grid">
-            @for (feature of keyFeatures; track feature) {
+            @for (key of features; track key) {
               <div class="features-box__item">
                 <ui-icon name="check" size="sm" [strokeWidth]="2" />
-                <span>{{ feature }}</span>
+                <span>{{ 'projects.finanzy.solution.features.' + key | transloco }}</span>
               </div>
             }
           </div>
@@ -197,32 +203,9 @@ import { IconComponent } from '@jhosetpfrancisco/ui';
 })
 export class FinanzySolutionComponent {
   readonly solutionCards = [
-    {
-      number: '01',
-      title: 'Tracking Simplificado',
-      description:
-        'Registro de gastos e ingresos en segundos con categorizaci\u00f3n inteligente autom\u00e1tica.',
-    },
-    {
-      number: '02',
-      title: 'Metas & Presupuestos',
-      description:
-        'Define objetivos financieros y presupuestos mensuales con seguimiento visual en tiempo real.',
-    },
-    {
-      number: '03',
-      title: 'IA Financiera',
-      description:
-        'Asistente inteligente que analiza tus patrones, predice gastos y ofrece consejos personalizados.',
-    },
+    { id: 'c1', number: '01' },
+    { id: 'c2', number: '02' },
+    { id: 'c3', number: '03' },
   ];
-
-  readonly keyFeatures = [
-    'Asistente IA conversacional',
-    'Dashboards interactivos',
-    'Multi-moneda',
-    'Sync Cloud en tiempo real',
-    'Notificaciones inteligentes',
-    'Reportes mensuales',
-  ];
+  readonly features = ['f1', 'f2', 'f3', 'f4', 'f5', 'f6'];
 }

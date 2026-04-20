@@ -1,57 +1,42 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { TranslocoModule } from '@jsverse/transloco';
 import { IconComponent } from '@jhosetpfrancisco/ui';
 
 @Component({
   selector: 'app-thaliq-problem',
   standalone: true,
-  imports: [IconComponent],
+  imports: [IconComponent, TranslocoModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section class="section">
       <div class="section__bg-dots"></div>
       <div class="container">
-        <span class="section-number">01 &mdash; El Problema</span>
-        <h2 class="section-title">El Costo de Tener un Agente IA</h2>
+        <span class="section-number">{{ 'projects.thaliq.problem.number' | transloco }}</span>
+        <h2 class="section-title">{{ 'projects.thaliq.problem.title' | transloco }}</h2>
 
         <div class="problem-grid">
           <div class="problem-bullets">
             <ul class="bullet-list">
-              <li class="bullet-list__item">
-                <ui-icon name="x" size="sm" />
-                <span>Equipos de ingenieros especializados en IA durante meses</span>
-              </li>
-              <li class="bullet-list__item">
-                <ui-icon name="x" size="sm" />
-                <span>Infraestructura compleja y costosa de mantener</span>
-              </li>
-              <li class="bullet-list__item">
-                <ui-icon name="x" size="sm" />
-                <span>Integraciones custom para cada herramienta y API</span>
-              </li>
-              <li class="bullet-list__item">
-                <ui-icon name="x" size="sm" />
-                <span>Iteraciones lentas que retrasan el time-to-market</span>
-              </li>
-              <li class="bullet-list__item">
-                <ui-icon name="x" size="sm" />
-                <span>Sin visibilidad ni control sobre el comportamiento del agente</span>
-              </li>
+              @for (key of bullets; track key) {
+                <li class="bullet-list__item">
+                  <ui-icon name="x" size="sm" />
+                  <span>{{ 'projects.thaliq.problem.bullets.' + key | transloco }}</span>
+                </li>
+              }
             </ul>
           </div>
 
           <div class="problem-metrics">
-            <div class="metric-card">
-              <span class="metric-card__value">$50K-$200K</span>
-              <span class="metric-card__label">Costo promedio de desarrollo de un agente IA custom</span>
-            </div>
-            <div class="metric-card">
-              <span class="metric-card__value">3-6 meses</span>
-              <span class="metric-card__label">Tiempo de desarrollo hasta produccion</span>
-            </div>
-            <div class="metric-card">
-              <span class="metric-card__value">Ongoing</span>
-              <span class="metric-card__label">Mantenimiento, actualizaciones e infraestructura continua</span>
-            </div>
+            @for (key of metrics; track key) {
+              <div class="metric-card">
+                <span class="metric-card__value">
+                  {{ 'projects.thaliq.problem.metrics.' + key + '.value' | transloco }}
+                </span>
+                <span class="metric-card__label">
+                  {{ 'projects.thaliq.problem.metrics.' + key + '.label' | transloco }}
+                </span>
+              </div>
+            }
           </div>
         </div>
       </div>
@@ -178,4 +163,7 @@ import { IconComponent } from '@jhosetpfrancisco/ui';
     }
   `,
 })
-export class ThaliqProblemComponent {}
+export class ThaliqProblemComponent {
+  readonly bullets = ['b1', 'b2', 'b3', 'b4', 'b5'];
+  readonly metrics = ['m1', 'm2', 'm3'];
+}

@@ -1,29 +1,40 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { TranslocoModule } from '@jsverse/transloco';
 import { IconComponent } from '@jhosetpfrancisco/ui';
+
+interface StackCard {
+  id: string;
+  icon: string;
+  tech: string;
+}
 
 @Component({
   selector: 'app-finanzy-stack',
   standalone: true,
-  imports: [IconComponent],
+  imports: [IconComponent, TranslocoModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section class="section">
       <div class="section__bg-diagonal"></div>
       <div class="container">
-        <span class="section-number">03 &mdash; Stack Tecnol&oacute;gico</span>
+        <span class="section-number">{{ 'projects.finanzy.stack.number' | transloco }}</span>
         <h2 class="section-title">
-          Stack Mobile-First con IA
+          {{ 'projects.finanzy.stack.title' | transloco }}
         </h2>
 
         <div class="stack-grid">
-          @for (card of stackCards; track card.title) {
+          @for (card of stackCards; track card.id) {
             <div class="stack-card">
               <div class="stack-card__icon">
                 <ui-icon [name]="card.icon" size="md" [strokeWidth]="1.5" />
               </div>
-              <h3 class="stack-card__title">{{ card.title }}</h3>
+              <h3 class="stack-card__title">
+                {{ 'projects.finanzy.stack.cards.' + card.id + '.title' | transloco }}
+              </h3>
               <p class="stack-card__tech">{{ card.tech }}</p>
-              <p class="stack-card__desc">{{ card.description }}</p>
+              <p class="stack-card__desc">
+                {{ 'projects.finanzy.stack.cards.' + card.id + '.desc' | transloco }}
+              </p>
             </div>
           }
         </div>
@@ -32,13 +43,15 @@ import { IconComponent } from '@jhosetpfrancisco/ui';
         <div class="stack-card stack-card--full">
           <div class="stack-card--full__header">
             <ui-icon name="cloud" size="md" [strokeWidth]="1.5" />
-            <h3 class="stack-card__title">AWS Cloud Infrastructure</h3>
+            <h3 class="stack-card__title">
+              {{ 'projects.finanzy.stack.aws_title' | transloco }}
+            </h3>
           </div>
           <div class="stack-card__techs stack-card__techs--infra">
-            @for (item of awsItems; track item) {
+            @for (key of awsItems; track key) {
               <div class="stack-card__tech-item">
                 <ui-icon name="server" size="xs" [strokeWidth]="1.5" />
-                <span>{{ item }}</span>
+                <span>{{ 'projects.finanzy.stack.aws.' + key | transloco }}</span>
               </div>
             }
           </div>
@@ -46,10 +59,11 @@ import { IconComponent } from '@jhosetpfrancisco/ui';
 
         <!-- Arquitectura de IA box -->
         <div class="arch-box">
-          <h3 class="arch-box__title">Arquitectura de IA</h3>
+          <h3 class="arch-box__title">
+            {{ 'projects.finanzy.stack.arch_title' | transloco }}
+          </h3>
           <p class="arch-box__desc">
-            Sistema de inteligencia artificial contextual que aprende de los
-            patrones financieros del usuario.
+            {{ 'projects.finanzy.stack.arch_desc' | transloco }}
           </p>
           <div class="arch-box__tags">
             @for (tag of aiTags; track tag) {
@@ -249,45 +263,14 @@ import { IconComponent } from '@jhosetpfrancisco/ui';
   `,
 })
 export class FinanzyStackComponent {
-  readonly stackCards = [
-    {
-      icon: 'smartphone',
-      title: 'Mobile App',
-      tech: 'Flutter + Dart',
-      description:
-        'App multiplataforma nativa con UI fluida y rendimiento \u00f3ptimo en iOS y Android.',
-    },
-    {
-      icon: 'globe',
-      title: 'Landing Page',
-      tech: 'Angular + Responsive',
-      description:
-        'P\u00e1gina web optimizada para conversi\u00f3n con SSR y dise\u00f1o adaptativo.',
-    },
-    {
-      icon: 'server',
-      title: 'Backend',
-      tech: 'NestJS + PostgreSQL',
-      description:
-        'API REST robusta con autenticaci\u00f3n JWT, validaciones y migraciones de base de datos.',
-    },
-    {
-      icon: 'brain',
-      title: 'Inteligencia Artificial',
-      tech: 'Anthropic Claude + Context-Aware',
-      description:
-        'Motor de IA que comprende el contexto financiero del usuario para ofrecer insights precisos.',
-    },
+  readonly stackCards: StackCard[] = [
+    { id: 'mobile', icon: 'smartphone', tech: 'Flutter + Dart' },
+    { id: 'landing', icon: 'globe', tech: 'Angular + Responsive' },
+    { id: 'backend', icon: 'server', tech: 'NestJS + PostgreSQL' },
+    { id: 'ai', icon: 'brain', tech: 'Anthropic Claude + Context-Aware' },
   ];
 
-  readonly awsItems = [
-    'EC2 / ECS para servicios',
-    'RDS PostgreSQL',
-    'S3 para almacenamiento',
-    'CloudFront CDN',
-    'Lambda para procesamiento',
-    'CloudWatch monitoreo',
-  ];
+  readonly awsItems = ['a1', 'a2', 'a3', 'a4', 'a5', 'a6'];
 
   readonly aiTags = [
     'Pattern Recognition',

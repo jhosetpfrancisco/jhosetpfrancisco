@@ -1,68 +1,52 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { TranslocoModule } from '@jsverse/transloco';
 import { IconComponent } from '@jhosetpfrancisco/ui';
+
+interface ValueItem {
+  id: string;
+  icon: string;
+}
 
 @Component({
   selector: 'app-thaliq-solution',
   standalone: true,
-  imports: [IconComponent],
+  imports: [IconComponent, TranslocoModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section class="section section--alt">
       <div class="section__bg-grid"></div>
       <div class="container">
-        <span class="section-number">02 &mdash; La Solucion</span>
-        <h2 class="section-title">Agentes IA en Minutos, No Meses</h2>
+        <span class="section-number">{{ 'projects.thaliq.solution.number' | transloco }}</span>
+        <h2 class="section-title">{{ 'projects.thaliq.solution.title' | transloco }}</h2>
         <p class="section-subtitle">
-          Thaliq elimina la complejidad tecnica para que cualquier empresa pueda
-          tener su propio agente de IA sin necesidad de un equipo de ingenieros.
+          {{ 'projects.thaliq.solution.subtitle' | transloco }}
         </p>
 
         <div class="solution-cards">
-          <div class="solution-card">
-            <span class="solution-card__icon">&#9889;</span>
-            <h4 class="solution-card__title">Deploy en Minutos</h4>
-            <p class="solution-card__text">
-              Configura y despliega un agente funcional en minutos, no semanas.
-              Sin servidores, sin DevOps, sin friccion.
-            </p>
-          </div>
-          <div class="solution-card">
-            <span class="solution-card__icon">&#128736;</span>
-            <h4 class="solution-card__title">No-Code/Low-Code</h4>
-            <p class="solution-card__text">
-              Interfaz visual para definir prompts, herramientas y flujos. Los
-              equipos de negocio pueden iterar sin depender de ingenieria.
-            </p>
-          </div>
-          <div class="solution-card">
-            <span class="solution-card__icon">&#128279;</span>
-            <h4 class="solution-card__title">Conecta Todo</h4>
-            <p class="solution-card__text">
-              Integraciones pre-construidas con APIs, bases de datos y
-              herramientas MCP. Conecta tu stack en clicks.
-            </p>
-          </div>
+          @for (card of cards; track card.id) {
+            <div class="solution-card">
+              <span class="solution-card__icon" [innerHTML]="card.icon"></span>
+              <h4 class="solution-card__title">
+                {{ 'projects.thaliq.solution.cards.' + card.id + '.title' | transloco }}
+              </h4>
+              <p class="solution-card__text">
+                {{ 'projects.thaliq.solution.cards.' + card.id + '.desc' | transloco }}
+              </p>
+            </div>
+          }
         </div>
 
         <div class="value-box">
-          <h4 class="value-box__title">Propuesta de Valor</h4>
+          <h4 class="value-box__title">
+            {{ 'projects.thaliq.solution.value_title' | transloco }}
+          </h4>
           <div class="value-box__grid">
-            <div class="value-box__item">
-              <ui-icon name="clock" size="sm" />
-              <span>Time-to-market reducido de meses a minutos</span>
-            </div>
-            <div class="value-box__item">
-              <ui-icon name="dollar-sign" size="sm" />
-              <span>Costo de entrada hasta 90% menor vs desarrollo custom</span>
-            </div>
-            <div class="value-box__item">
-              <ui-icon name="users" size="sm" />
-              <span>Equipos no-tecnicos pueden gestionar agentes</span>
-            </div>
-            <div class="value-box__item">
-              <ui-icon name="shield" size="sm" />
-              <span>Seguridad y escalabilidad enterprise desde el dia uno</span>
-            </div>
+            @for (item of valueItems; track item.id) {
+              <div class="value-box__item">
+                <ui-icon [name]="item.icon" size="sm" />
+                <span>{{ 'projects.thaliq.solution.value.' + item.id | transloco }}</span>
+              </div>
+            }
           </div>
         </div>
       </div>
@@ -221,4 +205,16 @@ import { IconComponent } from '@jhosetpfrancisco/ui';
     }
   `,
 })
-export class ThaliqSolutionComponent {}
+export class ThaliqSolutionComponent {
+  readonly cards = [
+    { id: 'c1', icon: '&#9889;' },
+    { id: 'c2', icon: '&#128736;' },
+    { id: 'c3', icon: '&#128279;' },
+  ];
+  readonly valueItems: ValueItem[] = [
+    { id: 'v1', icon: 'clock' },
+    { id: 'v2', icon: 'dollar-sign' },
+    { id: 'v3', icon: 'users' },
+    { id: 'v4', icon: 'shield' },
+  ];
+}

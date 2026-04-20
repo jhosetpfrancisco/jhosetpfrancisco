@@ -1,0 +1,439 @@
+{
+  "projects": {
+    "common": {
+      "back_to_portfolio": "Volver al Portafolio"
+    },
+    "mentebonita": {
+      "page": {
+        "cta_label": "Ver Demo Live"
+      },
+      "hero": {
+        "badge": "CASE STUDY",
+        "title": "MenteBonita",
+        "subtitle": "Plataforma 360 de mindfulness multitenant que revoluciona la gestión de servicios de bienestar mental"
+      },
+      "problem": {
+        "number": "01 — El Problema",
+        "title": "Gestión Manual y Fragmentada",
+        "before_heading": "Antes de la Solución",
+        "before_items": {
+          "b1": "Agendamiento manual de sesiones de mindfulness con especialistas, generando errores y conflictos de horario",
+          "b2": "Comunicación dispersa entre pacientes, especialistas y administradores sin un canal unificado",
+          "b3": "Facturación y seguimiento de pagos gestionados con hojas de cálculo, sin trazabilidad real",
+          "b4": "Imposibilidad de escalar el modelo de negocio a múltiples organizaciones (B2B) de forma eficiente"
+        },
+        "impact_heading": "Impacto en el Negocio",
+        "metrics": {
+          "m1": {
+            "value": "~70%",
+            "label": "del tiempo administrativo dedicado a tareas manuales repetitivas"
+          },
+          "m2": {
+            "value": "Limitado",
+            "label": "crecimiento por falta de infraestructura tecnológica escalable"
+          },
+          "m3": {
+            "value": "Fragmentada",
+            "label": "experiencia de usuario entre pacientes, especialistas y empresas"
+          }
+        }
+      },
+      "solution": {
+        "number": "02 — La Solución",
+        "title": "Plataforma 360 Multitenant",
+        "subtitle": "Diseñamos y desarrollamos una plataforma integral que centraliza la gestión de servicios de bienestar mental, permitiendo a múltiples organizaciones operar de forma independiente bajo una infraestructura compartida.",
+        "cards": {
+          "c1": {
+            "title": "Agendamiento Inteligente",
+            "desc": "Sistema de reservas en tiempo real con disponibilidad dinámica de especialistas, prevención de conflictos y notificaciones automáticas por email."
+          },
+          "c2": {
+            "title": "Videollamadas Integradas",
+            "desc": "Sesiones de mindfulness por videollamada con AWS Chime SDK, sin necesidad de aplicaciones externas, con salas dinámicas y grabación opcional."
+          },
+          "c3": {
+            "title": "Arquitectura Multitenant",
+            "desc": "Cada organización opera con datos aislados bajo un mismo despliegue, con configuración personalizada de marca, roles y permisos granulares."
+          }
+        },
+        "features_title": "Features Clave",
+        "features": {
+          "f1": {
+            "title": "Sistema de Notificaciones",
+            "desc": "Emails transaccionales con SES y colas asíncronas con SQS para recordatorios y confirmaciones"
+          },
+          "f2": {
+            "title": "Dashboard de Especialistas",
+            "desc": "Panel completo para gestionar agenda, pacientes, historial de sesiones y métricas de rendimiento"
+          },
+          "f3": {
+            "title": "Portal Corporativo B2B",
+            "desc": "Interfaz dedicada para empresas con gestión de empleados, planes y reportes de uso del servicio"
+          },
+          "f4": {
+            "title": "Experiencia Unificada",
+            "desc": "Flujo consistente para pacientes, especialistas y administradores desde una única aplicación"
+          }
+        }
+      },
+      "stack": {
+        "number": "03 — Stack",
+        "title": "Stack Tecnológico Enterprise",
+        "frontend_title": "Frontend",
+        "backend_title": "Backend",
+        "frontend": {
+          "angular": "Framework principal con standalone components, signals y lazy loading para máximo rendimiento",
+          "rxjs": "Programación reactiva para manejo de estado, flujos asíncronos y comunicación en tiempo real"
+        },
+        "backend": {
+          "nestjs": "Arquitectura modular con inyección de dependencias, guards, interceptors y validación robusta",
+          "postgres": "Base de datos relacional con esquemas separados por tenant, migraciones automatizadas y backups"
+        },
+        "infra_title": "Infraestructura AWS",
+        "infra": {
+          "chime": "Videollamadas en tiempo real con salas dinámicas y gestión de participantes",
+          "sqs": "Colas de mensajes para procesamiento asíncrono de notificaciones y eventos",
+          "ses": "Servicio de email transaccional para confirmaciones, recordatorios y comunicaciones",
+          "ec2": "Despliegue containerizado con escalado automático y alta disponibilidad",
+          "rds": "Base de datos gestionada con replicas de lectura y failover automático",
+          "cloudwatch": "Monitoreo centralizado con métricas, logs y alarmas para operación 24/7"
+        },
+        "arch_title": "Arquitectura Multitenant",
+        "arch_desc": "Cada organización opera con aislamiento completo de datos bajo una infraestructura compartida, optimizando costos y simplificando el mantenimiento."
+      },
+      "results": {
+        "number": "04 — Resultados",
+        "title": "Impacto Transformacional",
+        "metrics": {
+          "m1": {
+            "value": "100%",
+            "label": "Digitalización de la operación de agendamiento, sesiones y facturación"
+          },
+          "m2": {
+            "value": "B2B + B2C",
+            "label": "Modelo de negocio dual que permite vender a empresas y usuarios finales simultáneamente"
+          },
+          "m3": {
+            "value": "360°",
+            "label": "Cobertura completa del ciclo de vida del servicio de bienestar mental"
+          }
+        },
+        "achievements_title": "Logros Clave",
+        "achievements": {
+          "a1": "Plataforma multitenant funcional que soporta múltiples organizaciones con aislamiento completo de datos",
+          "a2": "Integración nativa de videollamadas eliminando la dependencia de herramientas externas como Zoom o Meet",
+          "a3": "Sistema de notificaciones asíncrono que procesa miles de emails sin afectar el rendimiento de la aplicación",
+          "a4": "Arquitectura preparada para escalar horizontalmente con costos predecibles y mantenimiento simplificado"
+        }
+      },
+      "cta": {
+        "title": "Explora la Plataforma",
+        "desc": "Descubre cómo MenteBonita está transformando la gestión de servicios de bienestar mental con tecnología de vanguardia.",
+        "primary": "Ver Demo Live"
+      }
+    },
+    "thaliq": {
+      "page": {
+        "cta_label": "Ver Plataforma"
+      },
+      "hero": {
+        "badge": "CASE STUDY • AI PLATFORM",
+        "title": "Thaliq",
+        "subtitle": "Plataforma plug & play para crear, desplegar y gestionar agentes de IA empresariales en minutos",
+        "note": "De idea a agente desplegado en minutos, no semanas"
+      },
+      "problem": {
+        "number": "01 — El Problema",
+        "title": "El Costo de Tener un Agente IA",
+        "bullets": {
+          "b1": "Equipos de ingenieros especializados en IA durante meses",
+          "b2": "Infraestructura compleja y costosa de mantener",
+          "b3": "Integraciones custom para cada herramienta y API",
+          "b4": "Iteraciones lentas que retrasan el time-to-market",
+          "b5": "Sin visibilidad ni control sobre el comportamiento del agente"
+        },
+        "metrics": {
+          "m1": {
+            "value": "$50K-$200K",
+            "label": "Costo promedio de desarrollo de un agente IA custom"
+          },
+          "m2": {
+            "value": "3-6 meses",
+            "label": "Tiempo de desarrollo hasta producción"
+          },
+          "m3": {
+            "value": "Ongoing",
+            "label": "Mantenimiento, actualizaciones e infraestructura continua"
+          }
+        }
+      },
+      "solution": {
+        "number": "02 — La Solución",
+        "title": "Agentes IA en Minutos, No Meses",
+        "subtitle": "Thaliq elimina la complejidad técnica para que cualquier empresa pueda tener su propio agente de IA sin necesidad de un equipo de ingenieros.",
+        "cards": {
+          "c1": {
+            "title": "Deploy en Minutos",
+            "desc": "Configura y despliega un agente funcional en minutos, no semanas. Sin servidores, sin DevOps, sin fricción."
+          },
+          "c2": {
+            "title": "No-Code/Low-Code",
+            "desc": "Interfaz visual para definir prompts, herramientas y flujos. Los equipos de negocio pueden iterar sin depender de ingeniería."
+          },
+          "c3": {
+            "title": "Conecta Todo",
+            "desc": "Integraciones pre-construidas con APIs, bases de datos y herramientas MCP. Conecta tu stack en clicks."
+          }
+        },
+        "value_title": "Propuesta de Valor",
+        "value": {
+          "v1": "Time-to-market reducido de meses a minutos",
+          "v2": "Costo de entrada hasta 90% menor vs desarrollo custom",
+          "v3": "Equipos no-técnicos pueden gestionar agentes",
+          "v4": "Seguridad y escalabilidad enterprise desde el día uno"
+        }
+      },
+      "capabilities": {
+        "number": "03 — Capabilities",
+        "title": "Todo lo que Necesitas para tu Agente",
+        "items": {
+          "prompts": {
+            "title": "Prompts Builder",
+            "desc": "Editor visual para crear, versionar y optimizar system prompts. Incluye templates, variables dinámicas y testing en tiempo real."
+          },
+          "rag": {
+            "title": "RAG",
+            "desc": "Sube documentos y conecta fuentes de datos. El agente consulta tu knowledge base en cada interacción con búsqueda semántica."
+          },
+          "mcp": {
+            "title": "MCP Tools",
+            "desc": "Conecta herramientas MCP pre-construidas o crea las tuyas. El agente ejecuta acciones reales: consultar APIs, enviar emails, actualizar bases de datos."
+          },
+          "http": {
+            "title": "HTTP Tools",
+            "desc": "Conecta cualquier API REST como herramienta del agente. Configura endpoints, autenticación y transformaciones sin código."
+          },
+          "instructions": {
+            "title": "Instructions Builder",
+            "desc": "Define flujos conversacionales, reglas de negocio y fallbacks con un editor visual. Control total sobre el comportamiento del agente."
+          },
+          "multi": {
+            "title": "Multi-Agent Orchestration",
+            "desc": "Orquesta múltiples agentes especializados que colaboran entre sí. Routing inteligente, delegación de tareas y contexto compartido."
+          }
+        }
+      },
+      "stack": {
+        "number": "04 — Stack",
+        "title": "Stack Tecnológico Enterprise",
+        "cards": {
+          "frontend": {
+            "category": "Frontend",
+            "title": "Angular + TypeScript",
+            "desc": "Aplicación SPA con Angular standalone components, signals y change detection OnPush. UI reactiva, accesible y performante."
+          },
+          "backend": {
+            "category": "Backend",
+            "title": "NestJS + PostgreSQL",
+            "desc": "API modular con NestJS, TypeORM y PostgreSQL. Arquitectura hexagonal, CQRS-ready y migraciones automatizadas."
+          },
+          "ai": {
+            "category": "Motor IA",
+            "title": "Claude SDK + Custom Agentic Engine",
+            "desc": "Motor de IA construido sobre el SDK puro de Claude. Agentic SDK propio con human-in-the-loop, function calling y multi-agent workflows."
+          },
+          "infra": {
+            "category": "Infraestructura",
+            "title": "AWS Cloud",
+            "desc": "Infraestructura en AWS con ECS Fargate, RDS, S3, CloudFront y CI/CD automatizado. Auto-scaling y alta disponibilidad."
+          }
+        },
+        "diff_title": "Custom Agentic SDK: El Diferenciador",
+        "diff_desc": "Thaliq utiliza el SDK puro de Claude como base, sobre el cual se construyó un Agentic SDK propio con capacidades avanzadas de orquestación, control y extensibilidad.",
+        "diff_note_prefix": "Próximamente:",
+        "diff_note_text": "SDKs nativos para iOS y Android, permitiendo integrar agentes Thaliq directamente en apps móviles."
+      },
+      "use_cases": {
+        "number": "05 — Casos de Uso",
+        "title": "Soluciones para Cada Industria",
+        "items": {
+          "ecommerce": {
+            "title": "E-commerce",
+            "desc": "Agentes de atención al cliente, recomendaciones de productos, gestión de pedidos y soporte post-venta automatizado 24/7."
+          },
+          "saas": {
+            "title": "SaaS / Tech",
+            "desc": "Onboarding inteligente, soporte técnico L1/L2, asistentes de documentación y agentes internos para equipos de producto."
+          },
+          "banca": {
+            "title": "Banca",
+            "desc": "Asesores financieros virtuales, análisis de riesgo, detección de fraude y automatización de procesos regulatorios (KYC/AML)."
+          },
+          "healthcare": {
+            "title": "Healthcare",
+            "desc": "Triaje inteligente, asistentes para pacientes, gestión de citas y agentes de documentación clínica con cumplimiento HIPAA."
+          },
+          "education": {
+            "title": "Educación",
+            "desc": "Tutores personalizados, asistentes de evaluación, chatbots de admisiones y agentes de soporte estudiantil 24/7."
+          },
+          "real_estate": {
+            "title": "Real Estate",
+            "desc": "Agentes de calificación de leads, asistentes de búsqueda de propiedades, automatización de follow-ups y análisis de mercado."
+          }
+        }
+      },
+      "impact": {
+        "number": "06 — Impacto",
+        "title": "Democratizando la IA Empresarial",
+        "cards": {
+          "c1": {
+            "value": "Minutos",
+            "label": "De configuración a agente en producción"
+          },
+          "c2": {
+            "value": "Sin Código",
+            "label": "Equipos de negocio gestionan sus propios agentes"
+          },
+          "c3": {
+            "value": "Enterprise",
+            "label": "Seguridad, escalabilidad y compliance desde el día uno"
+          }
+        },
+        "vision_title": "Visión de Thaliq",
+        "vision_p1": "Creemos que toda empresa debería poder tener agentes de IA sin necesidad de un equipo de machine learning. Thaliq democratiza el acceso a la IA empresarial eliminando las barreras técnicas y económicas.",
+        "vision_p2": "Nuestra visión es construir la plataforma donde cualquier organización — desde startups hasta corporaciones — pueda desplegar agentes inteligentes que transformen sus operaciones, en minutos y a una fracción del costo tradicional."
+      },
+      "cta": {
+        "title": "Conoce Thaliq",
+        "desc": "Descubre cómo Thaliq puede transformar la forma en que tu empresa utiliza la inteligencia artificial.",
+        "primary": "Ver Plataforma"
+      }
+    },
+    "finanzy": {
+      "page": {
+        "cta_label": "Ver Landing Page"
+      },
+      "hero": {
+        "badge": "CASE STUDY • PROYECTO PERSONAL",
+        "title": "Finanzy",
+        "subtitle": "Finanzas personales simplificadas con IA: Finance Easy = Finanzy",
+        "note": "Disponible en iOS y Android"
+      },
+      "problem": {
+        "number": "01 — El Problema",
+        "title": "Finanzas Personales = Confusión",
+        "before_heading": "La Realidad de las Finanzas Personales",
+        "bullets": {
+          "b1": "Las apps existentes son complejas y abrumadoras para el usuario promedio",
+          "b2": "La falta de educación financiera dificulta el seguimiento de gastos",
+          "b3": "Los métodos manuales (hojas de cálculo) son tediosos y se abandonan rápido",
+          "b4": "No existe una herramienta que combine simplicidad con inteligencia real",
+          "b5": "Los usuarios necesitan guía personalizada, no solo datos crudos"
+        },
+        "impact_heading": "Consecuencias",
+        "metrics": {
+          "frustration": {
+            "label": "Frustración",
+            "desc": "El 70% de los usuarios abandonan apps financieras en el primer mes por su complejidad"
+          },
+          "clarity": {
+            "label": "Sin Claridad",
+            "desc": "La mayoría de personas no tiene visibilidad real de a dónde va su dinero cada mes"
+          },
+          "decisions": {
+            "label": "Decisiones Pobres",
+            "desc": "Sin datos claros y contexto, las decisiones financieras se toman por intuición"
+          }
+        }
+      },
+      "solution": {
+        "number": "02 — La Solución",
+        "title": "Budgeting App Potenciada con IA",
+        "subtitle": "Una app mobile-first que combina tracking financiero intuitivo con inteligencia artificial para simplificar tus finanzas.",
+        "cards": {
+          "c1": {
+            "title": "Tracking Simplificado",
+            "desc": "Registro de gastos e ingresos en segundos con categorización inteligente automática."
+          },
+          "c2": {
+            "title": "Metas & Presupuestos",
+            "desc": "Define objetivos financieros y presupuestos mensuales con seguimiento visual en tiempo real."
+          },
+          "c3": {
+            "title": "IA Financiera",
+            "desc": "Asistente inteligente que analiza tus patrones, predice gastos y ofrece consejos personalizados."
+          }
+        },
+        "features_title": "Features Clave",
+        "features": {
+          "f1": "Asistente IA conversacional",
+          "f2": "Dashboards interactivos",
+          "f3": "Multi-moneda",
+          "f4": "Sync Cloud en tiempo real",
+          "f5": "Notificaciones inteligentes",
+          "f6": "Reportes mensuales"
+        }
+      },
+      "stack": {
+        "number": "03 — Stack Tecnológico",
+        "title": "Stack Mobile-First con IA",
+        "cards": {
+          "mobile": {
+            "title": "Mobile App",
+            "desc": "App multiplataforma nativa con UI fluida y rendimiento óptimo en iOS y Android."
+          },
+          "landing": {
+            "title": "Landing Page",
+            "desc": "Página web optimizada para conversión con SSR y diseño adaptativo."
+          },
+          "backend": {
+            "title": "Backend",
+            "desc": "API REST robusta con autenticación JWT, validaciones y migraciones de base de datos."
+          },
+          "ai": {
+            "title": "Inteligencia Artificial",
+            "desc": "Motor de IA que comprende el contexto financiero del usuario para ofrecer insights precisos."
+          }
+        },
+        "aws_title": "AWS Cloud Infrastructure",
+        "aws": {
+          "a1": "EC2 / ECS para servicios",
+          "a2": "RDS PostgreSQL",
+          "a3": "S3 para almacenamiento",
+          "a4": "CloudFront CDN",
+          "a5": "Lambda para procesamiento",
+          "a6": "CloudWatch monitoreo"
+        },
+        "arch_title": "Arquitectura de IA",
+        "arch_desc": "Sistema de inteligencia artificial contextual que aprende de los patrones financieros del usuario."
+      },
+      "personal": {
+        "number": "04 — Proyecto Personal",
+        "title": "De la Idea a Producción",
+        "cards": {
+          "fullstack": {
+            "title": "Full-Stack",
+            "desc": "Desarrollo completo end-to-end: desde la arquitectura del backend hasta los píxeles de la UI móvil."
+          },
+          "mobile": {
+            "title": "Mobile",
+            "desc": "App nativa con Flutter que cubre iOS y Android desde un solo código base con rendimiento nativo."
+          },
+          "ai": {
+            "title": "AI-Powered",
+            "desc": "Integración profunda con Anthropic Claude para un asistente financiero que realmente entiende."
+          }
+        },
+        "vision_title": "Visión del Proyecto",
+        "vision_p1": "Finanzy nace de una necesidad personal: gestionar finanzas de forma simple sin depender de hojas de cálculo complicadas. La idea evolucionó hasta convertirse en una app completa que combina la simplicidad de uso con el poder de la inteligencia artificial.",
+        "vision_p2": "Cada decisión técnica fue tomada pensando en escalabilidad y experiencia de usuario. Desde la elección de Flutter para cubrir ambas plataformas móviles con un solo código, hasta la integración de Anthropic Claude para ofrecer un asistente financiero que realmente entiende el contexto del usuario."
+      },
+      "cta": {
+        "title": "Descubre Finanzy",
+        "desc": "Simplifica tus finanzas personales con inteligencia artificial",
+        "primary": "Ver Landing Page"
+      }
+    }
+  }
+}

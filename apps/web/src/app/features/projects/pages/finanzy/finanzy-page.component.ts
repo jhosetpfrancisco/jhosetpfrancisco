@@ -23,7 +23,7 @@ import { SeoService } from '../../../../shared/services/seo.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <app-project-header
-      ctaLabel="Ver Landing Page"
+      ctaLabel="projects.finanzy.page.cta_label"
       ctaUrl="https://finanzy.app/"
     />
 

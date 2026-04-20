@@ -1,30 +1,30 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { TranslocoModule } from '@jsverse/transloco';
 import { ContainerComponent, SectionComponent } from '@jhosetpfrancisco/ui';
 import { InViewDirective } from '../../../shared/directives/in-view.directive';
 import { CountUpDirective } from '../../../shared/directives/count-up.directive';
 
 interface Stat {
+  id: string;
   numericValue: number;
   suffix: string;
-  label: string;
-  description: string;
 }
 
 @Component({
   selector: 'app-stats-section',
   standalone: true,
-  imports: [ContainerComponent, SectionComponent, InViewDirective, CountUpDirective],
+  imports: [ContainerComponent, SectionComponent, InViewDirective, CountUpDirective, TranslocoModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <ui-section class="stats">
       <div class="stats__pattern"></div>
       <ui-container maxWidth="6xl" class="stats__inner">
         <div class="stats__grid">
-          @for (stat of stats; track stat.label; let i = $index) {
+          @for (stat of stats; track stat.id; let i = $index) {
             <div class="stats__item" appInView [stagger]="i">
               <div class="stats__value" [appCountUp]="stat.numericValue" [suffix]="stat.suffix"></div>
-              <h3 class="stats__label">{{ stat.label }}</h3>
-              <p class="stats__desc">{{ stat.description }}</p>
+              <h3 class="stats__label">{{ 'home.stats.' + stat.id + '.label' | transloco }}</h3>
+              <p class="stats__desc">{{ 'home.stats.' + stat.id + '.desc' | transloco }}</p>
             </div>
           }
         </div>
@@ -111,23 +111,8 @@ interface Stat {
 })
 export class StatsSectionComponent {
   readonly stats: Stat[] = [
-    {
-      numericValue: 6,
-      suffix: '+',
-      label: 'Años de experiencia',
-      description: 'Desarrollando soluciones enterprise',
-    },
-    {
-      numericValue: 3,
-      suffix: '',
-      label: 'Productos creados',
-      description: 'Desde concepto hasta producción',
-    },
-{
-      numericValue: 15,
-      suffix: '+',
-      label: 'Tecnologías dominadas',
-      description: 'Full stack, mobile, DevOps & IA',
-    },
+    { id: 'years', numericValue: 6, suffix: '+' },
+    { id: 'products', numericValue: 3, suffix: '' },
+    { id: 'tech', numericValue: 15, suffix: '+' },
   ];
 }

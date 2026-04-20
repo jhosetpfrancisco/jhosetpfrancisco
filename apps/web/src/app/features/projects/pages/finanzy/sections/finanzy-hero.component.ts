@@ -1,19 +1,20 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { TranslocoModule } from '@jsverse/transloco';
 import { IconComponent } from '@jhosetpfrancisco/ui';
 
 @Component({
   selector: 'app-finanzy-hero',
   standalone: true,
-  imports: [IconComponent],
+  imports: [IconComponent, TranslocoModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section class="hero">
       <div class="hero__bg-pattern"></div>
       <div class="container hero__inner">
-        <span class="badge">CASE STUDY &bull; PROYECTO PERSONAL</span>
-        <h1 class="hero__title">Finanzy</h1>
+        <span class="badge">{{ 'projects.finanzy.hero.badge' | transloco }}</span>
+        <h1 class="hero__title">{{ 'projects.finanzy.hero.title' | transloco }}</h1>
         <p class="hero__subtitle">
-          Finanzas personales simplificadas con IA: Finance Easy = Finanzy
+          {{ 'projects.finanzy.hero.subtitle' | transloco }}
         </p>
         <div class="hero__tags">
           @for (tag of heroTags; track tag) {
@@ -22,7 +23,7 @@ import { IconComponent } from '@jhosetpfrancisco/ui';
         </div>
         <div class="hero__note">
           <ui-icon name="smartphone" size="sm" [strokeWidth]="1.5" />
-          <span>Disponible en iOS y Android</span>
+          <span>{{ 'projects.finanzy.hero.note' | transloco }}</span>
         </div>
       </div>
     </section>

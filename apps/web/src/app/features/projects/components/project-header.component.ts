@@ -1,29 +1,34 @@
 import { Component, ChangeDetectionStrategy, input, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslocoModule } from '@jsverse/transloco';
 import { IconComponent } from '@jhosetpfrancisco/ui';
+import { LangToggleComponent } from '../../../shared/components/lang-toggle/lang-toggle.component';
 
 @Component({
   selector: 'app-project-header',
   standalone: true,
-  imports: [IconComponent],
+  imports: [IconComponent, TranslocoModule, LangToggleComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <header class="header">
       <div class="header__inner">
         <button class="header__back" (click)="goBack()">
           <ui-icon name="arrow-left" size="sm" />
-          <span>Volver al Portafolio</span>
+          <span>{{ 'projects.common.back_to_portfolio' | transloco }}</span>
         </button>
 
-        <a
-          [href]="ctaUrl()"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="header__cta"
-        >
-          {{ ctaLabel() }}
-          <ui-icon name="external-link" size="xs" />
-        </a>
+        <div class="header__right">
+          <app-lang-toggle />
+          <a
+            [href]="ctaUrl()"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="header__cta"
+          >
+            {{ ctaLabel() | transloco }}
+            <ui-icon name="external-link" size="xs" />
+          </a>
+        </div>
       </div>
     </header>
   `,
@@ -61,6 +66,12 @@ import { IconComponent } from '@jhosetpfrancisco/ui';
 
     .header__back:hover {
       opacity: 0.8;
+    }
+
+    .header__right {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
     }
 
     .header__cta {

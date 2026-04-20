@@ -1,43 +1,40 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { TranslocoModule } from '@jsverse/transloco';
 
 @Component({
   selector: 'app-thaliq-impact',
   standalone: true,
+  imports: [TranslocoModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section class="section section--alt">
       <div class="section__bg-dots"></div>
       <div class="container">
-        <span class="section-number">06 &mdash; Impacto</span>
-        <h2 class="section-title">Democratizando la IA Empresarial</h2>
+        <span class="section-number">{{ 'projects.thaliq.impact.number' | transloco }}</span>
+        <h2 class="section-title">{{ 'projects.thaliq.impact.title' | transloco }}</h2>
 
         <div class="impact-cards">
-          <div class="impact-card">
-            <span class="impact-card__value">Minutos</span>
-            <span class="impact-card__label">De configuracion a agente en produccion</span>
-          </div>
-          <div class="impact-card">
-            <span class="impact-card__value">Sin Codigo</span>
-            <span class="impact-card__label">Equipos de negocio gestionan sus propios agentes</span>
-          </div>
-          <div class="impact-card">
-            <span class="impact-card__value">Enterprise</span>
-            <span class="impact-card__label">Seguridad, escalabilidad y compliance desde el dia uno</span>
-          </div>
+          @for (key of cards; track key) {
+            <div class="impact-card">
+              <span class="impact-card__value">
+                {{ 'projects.thaliq.impact.cards.' + key + '.value' | transloco }}
+              </span>
+              <span class="impact-card__label">
+                {{ 'projects.thaliq.impact.cards.' + key + '.label' | transloco }}
+              </span>
+            </div>
+          }
         </div>
 
         <div class="vision-box">
-          <h4 class="vision-box__title">Vision de Thaliq</h4>
+          <h4 class="vision-box__title">
+            {{ 'projects.thaliq.impact.vision_title' | transloco }}
+          </h4>
           <p class="vision-box__text">
-            Creemos que toda empresa deberia poder tener agentes de IA sin necesidad
-            de un equipo de machine learning. Thaliq democratiza el acceso a la IA
-            empresarial eliminando las barreras tecnicas y economicas.
+            {{ 'projects.thaliq.impact.vision_p1' | transloco }}
           </p>
           <p class="vision-box__text">
-            Nuestra vision es construir la plataforma donde cualquier organizacion
-            &mdash; desde startups hasta corporaciones &mdash; pueda desplegar agentes
-            inteligentes que transformen sus operaciones, en minutos y a una fraccion
-            del costo tradicional.
+            {{ 'projects.thaliq.impact.vision_p2' | transloco }}
           </p>
         </div>
       </div>
@@ -162,4 +159,6 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
     }
   `,
 })
-export class ThaliqImpactComponent {}
+export class ThaliqImpactComponent {
+  readonly cards = ['c1', 'c2', 'c3'];
+}
